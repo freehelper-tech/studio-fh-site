@@ -35,6 +35,14 @@
   const tabParam = new URLSearchParams(location.search).get("tab");
   if (tabParam && tabs[tabParam]) tabs[tabParam].click();
 
+  /* ---------- clients marquee ---------- */
+  const clientsRow = document.getElementById("clientsRow");
+  if (clientsRow) {
+    // duplica a fileira p/ o loop de -50% emendar sem pulo
+    clientsRow.innerHTML += clientsRow.innerHTML;
+    clientsRow.classList.add("marquee");
+  }
+
   /* ---------- cases carousel ---------- */
   const track = document.getElementById("caseTrack");
   const step = () => {
