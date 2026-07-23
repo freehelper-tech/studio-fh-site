@@ -35,6 +35,9 @@ WEIGHTS = {
     "argo": 0.96,
     "ache": 1.02,
     "tractian": 0.80,            # wordmark bem larga -> reduz
+    "sanremo": 1.15,             # logo empilhada compacta
+    "sap": 0.95,
+    "enaex": 1.00,
 }
 
 def trim(im):
