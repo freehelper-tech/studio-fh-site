@@ -69,13 +69,13 @@ api/cadastro.js        → função serverless (Vercel): cria o item no board de
 - **Hospedagem**: o site oficial (studio.freehelper.com.br) é servido pelo **GitHub Pages** (só estático), então
   a função `/api/cadastro` roda no projeto **Vercel** `studio-fh-site` (studio-fh-site.vercel.app). O `cadastro.js`
   chama a URL absoluta da Vercel quando não está em localhost/vercel.app, e a função libera CORS só para o domínio oficial.
-  **Deploy = 2 passos**: `git push` (site) + `vercel deploy --prod --scope freehelper-tech` (API).
-  Se mudar variável de ambiente na Vercel, precisa redeployar a API.
+  O repo está conectado ao projeto Vercel, então **um `git push` na `main` publica os dois** (Pages + API).
+  Se mudar variável de ambiente na Vercel, precisa redeployar a API (`vercel deploy --prod --scope freehelper-tech`).
 
 ## Trocar cores
 Tudo está em variáveis CSS no topo do `styles.css` (`:root`). Mudou ali, mudou no site inteiro.
 
 ## Publicar (deploy)
 - **Site**: `git push` na `main` → GitHub Pages publica em studio.freehelper.com.br (CNAME) em ~1 min.
-- **API do formulário**: `vercel deploy --prod --scope freehelper-tech` (projeto studio-fh-site, time freehelper-tech).
+- **API do formulário**: o mesmo push deploya o projeto Vercel `studio-fh-site` (repo conectado). Manual: `vercel deploy --prod --scope freehelper-tech`.
 ```
