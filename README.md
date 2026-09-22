@@ -66,12 +66,16 @@ api/cadastro.js        → função serverless (Vercel): cria o item no board de
 - **Eventos no dataLayer (GTM)**: `cadastro_empresa_inicio` (começou a preencher), `cadastro_empresa` (enviado com sucesso),
   `obrigado_empresa` (página de obrigado carregou). `form_origem` = `landing` (home) ou `cadastro` (página).
 - **Testar local**: `vercel dev --listen 5124` com `CADASTRO_DRY_RUN=1` no `.env` (não chama o Monday).
+- **Hospedagem**: o site oficial (studio.freehelper.com.br) é servido pelo **GitHub Pages** (só estático), então
+  a função `/api/cadastro` roda no projeto **Vercel** `studio-fh-site` (studio-fh-site.vercel.app). O `cadastro.js`
+  chama a URL absoluta da Vercel quando não está em localhost/vercel.app, e a função libera CORS só para o domínio oficial.
+  **Deploy = 2 passos**: `git push` (site) + `vercel deploy --prod --scope freehelper-tech` (API).
+  Se mudar variável de ambiente na Vercel, precisa redeployar a API.
 
 ## Trocar cores
 Tudo está em variáveis CSS no topo do `styles.css` (`:root`). Mudou ali, mudou no site inteiro.
 
 ## Publicar (deploy)
-Por ser estático, sobe em qualquer lugar:
-- **Vercel/Netlify**: arrasta a pasta ou conecta o repositório (zero config).
-- **GitHub Pages**: sobe os arquivos e ativa Pages.
+- **Site**: `git push` na `main` → GitHub Pages publica em studio.freehelper.com.br (CNAME) em ~1 min.
+- **API do formulário**: `vercel deploy --prod --scope freehelper-tech` (projeto studio-fh-site, time freehelper-tech).
 ```

@@ -6,7 +6,11 @@
 (function () {
   "use strict";
 
-  var ENDPOINT = "/api/cadastro";
+  // O site oficial roda no GitHub Pages (estático); a função /api/cadastro vive no
+  // projeto Vercel studio-fh-site. Fora do Vercel/local, chama a URL absoluta.
+  var API_HOST = "https://studio-fh-site.vercel.app";
+  var sameOrigin = /localhost|127\.0\.0\.1|\.vercel\.app$/.test(location.hostname);
+  var ENDPOINT = (sameOrigin ? "" : API_HOST) + "/api/cadastro";
   var THANKS = "/obrigado-empresa/";
   var UTM_KEY = "fh_utm";
 

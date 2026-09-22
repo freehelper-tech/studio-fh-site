@@ -109,8 +109,19 @@ function safeParse(s) {
   }
 }
 
+// O site oficial (GitHub Pages) chama esta função de outra origem → CORS.
+const ALLOWED_ORIGINS = /^https:\/\/(studio\.freehelper\.com\.br|[a-z0-9-]+\.vercel\.app)$|^http:\/\/localhost(:\d+)?$/;
+
 module.exports = async (req, res) => {
+  const origin = req.headers.origin || "";
+  if (ALLOWED_ORIGINS.test(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+  }
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Cache-Control", "no-store");
+  if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") return res.status(405).json({ ok: false, error: "Method not allowed" });
 
   const body = typeof req.body === "string" ? safeParse(req.body) : req.body;
