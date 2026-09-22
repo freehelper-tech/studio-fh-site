@@ -33,8 +33,18 @@ assets/img/       → logos (logo-white.png p/ fundo escuro, logo-blue.png)
 - **Imagens das abas e dos cards "Por que escolhem"**: hoje são gradientes da marca. Para colocar fotos, no `styles.css` use os seletores `.panel__visual` e `.wcard__media` e adicione `background-image:url('assets/img/SEU-ARQUIVO.jpg')`. Os atributos `data-img="..."` no HTML já marcam qual é qual.
 - **Logos dos clientes**: hoje são wordmarks em texto. Trocar por PNG/SVG das marcas em `.clients__row`.
 - **Cards flutuantes** das abas (ex.: "Mentoria 1:1 · Ativa"): textos ilustrativos, ajuste à vontade.
-- **Links dos cases**: apontam para `#contato` por enquanto (páginas de case ainda não existem).
+- **Links dos cases**: só a Mapfre tem página (`case-fh/mapfre/`); os demais apontam para `#contato`.
 - **E-mail de contato**: `contato@freehelper.com.br` — confirme/ajuste no `index.html` e no rodapé.
+
+## Páginas de case (`/case-fh/<empresa>/`)
+Cada case é uma pasta com `index.html` em `case-fh/`, no layout de go-lifted.com/case-studies
+(hero em card com foto, métricas "Em vista", depoimento em destaque, corpo em 3 colunas com índice).
+Compartilham `case.css` + `case.js` (carregados depois do `styles.css`).
+
+- Primeiro case: `case-fh/mapfre/` (ligado no card "Expert Mapfre" da home).
+- Para criar outro: copie a pasta `mapfre`, troque textos/logo e aponte o card da home (`href="case-fh/<slug>/"`).
+- Fotos opcionais em `assets/img/cases/<slug>/` (`hero.jpg`, `champion.jpg`); sem elas a página usa
+  fotos ilustrativas com a tag "foto ilustrativa".
 
 ## Trocar cores
 Tudo está em variáveis CSS no topo do `styles.css` (`:root`). Mudou ali, mudou no site inteiro.
