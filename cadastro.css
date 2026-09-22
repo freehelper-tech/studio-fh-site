@@ -1,0 +1,140 @@
+/* ============================================================
+   studio.fh — formulário de cadastro (home + /cadastro) e /obrigado-empresa
+   Depende das variáveis de styles.css.
+   ============================================================ */
+
+/* ---------- card do formulário ---------- */
+.cad{
+  position:relative;z-index:2;text-align:left;
+  background:rgba(9,10,44,.62);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(169,224,45,.35);border-radius:24px;padding:28px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 0 34px -8px rgba(169,224,45,.35),0 24px 70px -24px rgba(0,0,0,.7);
+}
+.cad__top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+.cad__kicker{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--a-cyan)}
+.cad__count{font-size:.78rem;color:var(--muted-2);white-space:nowrap}
+.cad__bar{height:5px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
+.cad__bar i{display:block;height:100%;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--a-cyan),var(--lime));transition:width .5s var(--ease)}
+.cad__steps{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.cad__steps span{font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--muted-2);
+  padding:.3em .7em;border-radius:999px;border:1px solid var(--line);background:var(--card);transition:.25s}
+.cad__steps span.is-done{color:var(--lime);border-color:rgba(169,224,45,.4)}
+.cad__steps span.is-active{color:#fff;border-color:var(--line-2);background:var(--card-2)}
+
+.cad__step{display:none;margin-top:22px}
+.cad__step.is-active{display:block;animation:cadFade .45s var(--ease)}
+@keyframes cadFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cad__title{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.cad__hint{margin-top:6px;font-size:.92rem;color:var(--muted)}
+
+/* ---------- campos ---------- */
+.cad__grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field--full{grid-column:1/-1}
+.field label{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.field label b{color:var(--lime);font-weight:700}
+.field input,.field textarea{
+  width:100%;font:inherit;font-size:1rem;color:#fff;
+  background:rgba(255,255,255,.05);border:1px solid var(--line-2);border-radius:14px;
+  padding:.85em 1em;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.field textarea{min-height:130px;resize:vertical;line-height:1.5}
+.field input::placeholder,.field textarea::placeholder{color:rgba(231,233,255,.35)}
+.field input:focus,.field textarea:focus{border-color:var(--lime);background:rgba(255,255,255,.07);
+  box-shadow:0 0 0 3px rgba(169,224,45,.15)}
+.field.is-invalid input,.field.is-invalid textarea{border-color:#ff8a8f;box-shadow:0 0 0 3px rgba(226,50,57,.15)}
+.field__err{display:none;font-size:.78rem;color:#ff8a8f}
+.field.is-invalid .field__err{display:block}
+.cad__hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ---------- rodapé do card ---------- */
+.cad__nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+.cad__nav .btn{white-space:nowrap}
+.cad__nav .btn[disabled]{opacity:.35;pointer-events:none}
+.cad__nav .btn--ghost.is-hidden{visibility:hidden}
+.cad__error{display:none;margin-top:14px;font-size:.9rem;color:#ff8a8f;
+  background:rgba(226,50,57,.08);border:1px solid rgba(226,50,57,.3);border-radius:12px;padding:.7em 1em}
+.cad__error.is-on{display:block}
+.cad__error a{color:#fff;text-decoration:underline}
+.cad__legal{margin-top:14px;font-size:.74rem;line-height:1.5;color:var(--muted-2)}
+.cad.is-sending{pointer-events:none;opacity:.75}
+.btn .spin{display:none;width:14px;height:14px;border:2px solid rgba(11,21,0,.35);border-top-color:#0b1500;
+  border-radius:50%;animation:cadSpin .7s linear infinite}
+.cad.is-sending .btn .spin{display:inline-block}
+.cad.is-sending .btn .arr{display:none}
+@keyframes cadSpin{to{transform:rotate(360deg)}}
+
+/* ---------- CTA da home com formulário embutido ---------- */
+.cta__inner--form{text-align:left;padding:64px 48px}
+.cta__grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.cta__grid .cta__content{max-width:520px}
+.cta__grid .cta p{margin-left:0}
+.cta__points{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.cta__points li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.85);font-size:1rem}
+.cta__points i{flex:none;width:22px;height:22px;border-radius:50%;margin-top:2px;
+  background:rgba(169,224,45,.15);border:1px solid rgba(169,224,45,.45);
+  display:inline-flex;align-items:center;justify-content:center;font-style:normal;color:var(--lime);font-size:.75rem;font-weight:700}
+
+/* ---------- página /cadastro ---------- */
+.cadpage{padding:124px 0 70px;position:relative;overflow:hidden;isolation:isolate}
+.cadpage__aurora{position:absolute;inset:0;z-index:-1}
+.cadpage__aurora .aurora{border-radius:0;background:#090a38}
+.cadpage__aurora .aurora__blob{filter:blur(90px);opacity:.7}
+.cadpage__aurora::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,6,31,.75),rgba(6,6,31,.9) 60%,var(--bg))}
+.cadpage__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.cadpage__copy{position:sticky;top:110px}
+.cadpage__copy h1{font-size:clamp(2.2rem,4.6vw,3.4rem);margin-top:22px;letter-spacing:-.03em}
+.cadpage__copy p{margin-top:20px;font-size:1.12rem;color:rgba(231,233,255,.8);max-width:480px}
+.cadpage__list{list-style:none;margin-top:32px;display:flex;flex-direction:column;gap:18px}
+.cadpage__list li{display:flex;gap:16px;align-items:flex-start}
+.cadpage__list b{flex:none;width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(169,224,45,.14);border:1px solid rgba(169,224,45,.4);color:var(--lime);font-size:.9rem}
+.cadpage__list strong{display:block;font-weight:600}
+.cadpage__list span{display:block;color:var(--muted);font-size:.93rem;margin-top:2px}
+.cadpage .cad{padding:34px}
+
+/* ---------- página /obrigado-empresa ---------- */
+.thanks{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 24px 60px;
+  position:relative;overflow:hidden;isolation:isolate}
+.thanks__aurora{position:absolute;inset:0;z-index:-1}
+.thanks__aurora .aurora{border-radius:0;background:#090a38}
+.thanks__aurora .aurora__blob{filter:blur(90px);opacity:.75}
+.thanks__aurora::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%,rgba(6,6,31,.2),rgba(6,6,31,.85))}
+.thanks__card{width:min(640px,100%);text-align:center;
+  background:rgba(9,10,44,.62);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(169,224,45,.35);border-radius:28px;padding:56px 40px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 0 40px -8px rgba(169,224,45,.35),0 30px 80px -30px rgba(0,0,0,.8)}
+.thanks__check{width:72px;height:72px;border-radius:50%;margin:0 auto 22px;
+  background:var(--lime);color:#0b1500;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 40px -6px rgba(169,224,45,.7);animation:pop .6s var(--ease)}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.thanks h1{font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-.03em}
+.thanks p{margin-top:16px;color:rgba(231,233,255,.8);font-size:1.1rem}
+.thanks__actions{margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.thanks__small{margin-top:26px;font-size:.85rem;color:var(--muted-2)}
+
+/* ---------- responsivo ---------- */
+@media (max-width:980px){
+  .cta__grid{grid-template-columns:1fr}
+  .cta__grid .cta__content{max-width:none}
+  .cadpage__grid{grid-template-columns:1fr;gap:34px}
+  .cadpage__copy{position:static}
+}
+@media (max-width:760px){
+  .cad{padding:22px 18px;border-radius:20px}
+  .cadpage .cad{padding:22px 18px}
+  .cad__grid{grid-template-columns:1fr}
+  .cad__title{font-size:1.25rem}
+  .cta__inner--form{padding:44px 20px}
+  .cadpage{padding-top:104px}
+  .thanks__card{padding:40px 22px}
+  .cad__nav .btn{padding:.8em 1.1em;font-size:.9rem}
+}
+
+/* o .cta tem regras genéricas de <p>; o card dentro dele usa as próprias */
+.cta .cad p{margin:0;max-width:none;font-size:inherit;color:inherit}
+.cta .cad__hint{margin-top:6px;font-size:.92rem;color:var(--muted)}
+.cta .cad__legal{margin-top:14px;font-size:.74rem;color:var(--muted-2)}

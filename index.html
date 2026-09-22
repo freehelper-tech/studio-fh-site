@@ -18,6 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 <meta name="theme-color" content="#03038c" />
 <link rel="stylesheet" href="styles.css?v=8" />
+<link rel="stylesheet" href="cadastro.css?v=1" />
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -38,7 +39,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#engine">Tecnologia</a>
     </nav>
     <div class="nav__actions">
-      <a href="https://wkf.ms/4tTxfXJ" target="_blank" rel="noopener" class="btn btn--lime">Fale com especialistas</a>
+      <a href="/cadastro/" class="btn btn--lime">Fale com especialistas</a>
     </div>
     <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -72,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         desenvolvem colaboradores e impulsionam objetivos estratégicos de marcas.
       </p>
       <div class="hero__cta">
-        <a href="https://wkf.ms/4tTxfXJ" target="_blank" rel="noopener" class="btn btn--lime btn--lg">Explore possibilidades <span class="arr">→</span></a>
+        <a href="/cadastro/" class="btn btn--lime btn--lg">Explore possibilidades <span class="arr">→</span></a>
         <a href="#cases" class="btn btn--ghost btn--lg">Ver cases</a>
       </div>
     </div>
@@ -339,18 +340,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ===================== FINAL CTA ===================== -->
 <section class="cta" id="contato">
-  <div class="container cta__inner reveal">
+  <div class="container cta__inner cta__inner--form reveal">
     <div class="aurora aurora--cta">
       <span class="aurora__blob b1"></span>
       <span class="aurora__blob b2"></span>
       <span class="aurora__blob b3"></span>
     </div>
-    <div class="cta__content">
-      <h2>Pronto para transformar<br />impacto social em <span class="grad">resultados?</span></h2>
-      <p>Vamos construir uma estratégia alinhada aos seus objetivos, colaboradores e comunidades.</p>
-      <div class="cta__actions">
-        <a href="https://wkf.ms/4tTxfXJ" target="_blank" rel="noopener" class="btn btn--lime btn--lg">Fale com nossos especialistas <span class="arr">→</span></a>
+    <div class="cta__grid">
+      <div class="cta__content">
+        <h2>Pronto para transformar<br />impacto social em <span class="grad">resultados?</span></h2>
+        <p>Conte o seu desafio. Vamos construir uma estratégia alinhada aos seus objetivos, colaboradores e comunidades.</p>
+        <ul class="cta__points">
+          <li><i>✓</i><span>Retorno de um especialista em até 1 dia útil</span></li>
+          <li><i>✓</i><span>Conversa de diagnóstico de 30 minutos, sem compromisso</span></li>
+          <li><i>✓</i><span>Proposta desenhada para o seu desafio, do piloto à escala</span></li>
+        </ul>
       </div>
+      <div class="cad" data-cadastro="landing"></div>
     </div>
   </div>
 </section>
@@ -384,5 +390,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="script.js?v=2"></script>
+<script src="cadastro.js?v=1"></script>
 </body>
 </html>
