@@ -58,7 +58,7 @@
   background:rgba(226,50,57,.08);border:1px solid rgba(226,50,57,.3);border-radius:12px;padding:.7em 1em}
 .cad__error.is-on{display:block}
 .cad__error a{color:#fff;text-decoration:underline}
-.cad__legal{margin-top:14px;font-size:.74rem;line-height:1.5;color:var(--muted-2)}
+.cad__legal{margin-top:18px;font-size:.72rem;line-height:1.5;color:var(--muted-2)}
 .cad.is-sending{pointer-events:none;opacity:.75}
 .btn .spin{display:none;width:14px;height:14px;border:2px solid rgba(11,21,0,.35);border-top-color:#0b1500;
   border-radius:50%;animation:cadSpin .7s linear infinite}
@@ -136,5 +136,5 @@
 
 /* o .cta tem regras genéricas de <p>; o card dentro dele usa as próprias */
 .cta .cad p{margin:0;max-width:none;font-size:inherit;color:inherit}
-.cta .cad__hint{margin-top:6px;font-size:.92rem;color:var(--muted)}
-.cta .cad__legal{margin-top:14px;font-size:.74rem;color:var(--muted-2)}
+.cta .cad .cad__hint{margin-top:6px;font-size:.92rem;color:var(--muted)}
+.cta .cad .cad__legal{margin-top:18px;font-size:.72rem;line-height:1.5;color:var(--muted-2)}

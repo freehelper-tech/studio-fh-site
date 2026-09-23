@@ -119,11 +119,11 @@
         stepsHtml +
         '<input class="cad__hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />' +
         '<div class="cad__error" role="alert"></div>' +
+        '<p class="cad__legal">Ao enviar, você concorda em receber contato da Freehelper sobre sua solicitação. Tratamos seus dados conforme a LGPD.</p>' +
         '<div class="cad__nav">' +
           '<button type="button" class="btn btn--ghost cad__back">← Voltar</button>' +
           '<button type="submit" class="btn btn--lime cad__next">Próxima <span class="arr">→</span><span class="spin"></span></button>' +
         "</div>" +
-        '<p class="cad__legal">Ao enviar, você concorda em receber contato da Freehelper sobre sua solicitação. Tratamos seus dados conforme a LGPD.</p>' +
       "</form>";
   }
 
