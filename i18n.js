@@ -47,7 +47,9 @@
     // desktop apertado: só bandeiras
     "@media (max-width:1100px) and (min-width:761px){.lang a span{display:none}.lang a{padding:.5em .55em}}" +
     "@media (max-width:760px){.nav__right{gap:6px;margin-left:auto}.lang a{padding:.42em .55em;gap:5px}}" +
-    "@media (max-width:360px){.lang a span{display:none}.lang a{padding:.5em}}";
+    // celular: só bandeiras, pra não espremer a logo
+    "@media (max-width:430px){.lang a span{display:none}.lang a{padding:.5em .55em}}" +
+    "@media (max-width:360px){.nav__inner{gap:12px}.nav__logo img{height:26px}}";
   var style = document.createElement("style");
   style.textContent = css;
   document.head.appendChild(style);
