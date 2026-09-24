@@ -72,6 +72,15 @@ api/cadastro.js        → função serverless (Vercel): cria o item no board de
   O repo está conectado ao projeto Vercel, então **um `git push` na `main` publica os dois** (Pages + API).
   Se mudar variável de ambiente na Vercel, precisa redeployar a API (`vercel deploy --prod --scope freehelper-tech`).
 
+## Idiomas (PT / EN / ES)
+
+- **PT é a fonte** e fica na raiz (`/`, `/cadastro/`, `/case-fh/mapfre/`...). `/pt/` só redireciona pra raiz.
+- **EN e ES são páginas geradas** em `/en/...` e `/es/...` — não edite esses HTMLs à mão.
+- Textos traduzidos ficam em `tools/i18n/en.json` e `es.json` (chave = texto exato em PT, valor = tradução; `_keep` = o que não se traduz: marcas, programas, ONGs, e-mails). Base: revisão do Henrique de 23/09/2026.
+- Textos do formulário (etapas, erros, botões) ficam no objeto `TEXTS` do `cadastro.js`.
+- **Mudou um texto em PT?** Rode `python3 tools/i18n/build.py`. Se aparecer texto sem tradução, adicione nos dois JSON e rode de novo. Depois commit + push.
+- Analytics: cada página manda `page_language` (pt/en/es) no dataLayer antes do GTM, e o seletor dispara `idioma_trocado`. Páginas nova de case precisam entrar na lista `PAGES` do `build.py`.
+
 ## Trocar cores
 Tudo está em variáveis CSS no topo do `styles.css` (`:root`). Mudou ali, mudou no site inteiro.
 

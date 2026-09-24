@@ -11,51 +11,96 @@
   var API_HOST = "https://studio-fh-site.vercel.app";
   var sameOrigin = /localhost|127\.0\.0\.1|\.vercel\.app$/.test(location.hostname);
   var ENDPOINT = (sameOrigin ? "" : API_HOST) + "/api/cadastro";
-  var THANKS = "/obrigado-empresa/";
+  // Idioma vem do <html lang> (pt-BR na raiz, en em /en/, es em /es/ — gerados por tools/i18n/build.py)
+  var LANG = (document.documentElement.lang || "pt").slice(0, 2);
+  if (!/^(en|es)$/.test(LANG)) LANG = "pt";
+  var PREFIX = LANG === "pt" ? "" : "/" + LANG;
+  var THANKS = PREFIX + "/obrigado-empresa/";
   var UTM_KEY = "fh_utm";
+
+  var TEXTS = {
+    pt: {
+      s1: ["Sobre você", "Quem está falando com a gente?", "Leva menos de um minuto. Nossa equipe retorna em até 1 dia útil."],
+      s2: ["Sua empresa", "Onde você atua?", "Usamos o e-mail e o telefone só para retornar o contato."],
+      s3: ["Seu desafio", "Qual o principal desafio que estão enfrentando?", "Pode ser em poucas linhas. Isso ajuda a gente a chegar na conversa já com ideias."],
+      nome: ["Nome", "Seu nome"], sobrenome: ["Sobrenome", "Seu sobrenome"], cargo: ["Cargo", "Ex.: Gerente de Sustentabilidade"],
+      empresa: ["Empresa", "Nome da empresa"], email: ["E-mail corporativo", "voce@empresa.com.br"],
+      telefone: ["Telefone / WhatsApp", "(11) 99999-9999"],
+      desafio: ["Conte para a gente", "Ex.: queremos engajar colaboradores em voluntariado, mas a adesão é baixa…"],
+      err: { nome: "Informe seu nome.", sobrenome: "Informe seu sobrenome.", cargo: "Informe seu cargo.", empresa: "Informe a empresa.",
+        email: "Digite um e-mail válido.", telefone: "Digite um telefone com DDD.", desafio: "Conte um pouco do desafio." },
+      kicker: "Fale com especialistas", step: "Etapa {i} de {n}", back: "Voltar", next: "Próxima", send: "Enviar cadastro",
+      legal: "Ao enviar, você concorda em receber contato da Freehelper sobre sua solicitação. Tratamos seus dados conforme a LGPD.",
+      fail: "Não conseguimos enviar agora.", mail: "Se preferir, escreva para",
+    },
+    en: {
+      s1: ["About you", "Who are we talking to?", "It takes less than a minute. Our team will get back to you within 1 business day."],
+      s2: ["Your company", "Where do you work?", "We only use your email and phone to get back to you."],
+      s3: ["Your challenge", "What's the main challenge your team is facing?", "A few lines are enough. It helps us come to the call with ideas."],
+      nome: ["First name", "Your first name"], sobrenome: ["Last name", "Your last name"], cargo: ["Job title", "e.g., Sustainability Manager"],
+      empresa: ["Company", "Company name"], email: ["Work email", "you@company.com"],
+      telefone: ["Phone / WhatsApp", "+1 555 123 4567"],
+      desafio: ["Tell us about it", "e.g., we want to engage employees in volunteering, but participation is low…"],
+      err: { nome: "Enter your first name.", sobrenome: "Enter your last name.", cargo: "Enter your job title.", empresa: "Enter your company.",
+        email: "Enter a valid email.", telefone: "Enter a phone number with country code.", desafio: "Tell us a bit about the challenge." },
+      kicker: "Talk to our experts", step: "Step {i} of {n}", back: "Back", next: "Next", send: "Submit",
+      legal: "By submitting, you agree to be contacted by Freehelper about your request. We handle your data in accordance with Brazil's data protection law (LGPD).",
+      fail: "We couldn't send your request right now.", mail: "If you prefer, write to",
+    },
+    es: {
+      s1: ["Sobre ti", "¿Con quién estamos hablando?", "Te llevará menos de un minuto. Nuestro equipo te responde en hasta 1 día hábil."],
+      s2: ["Tu empresa", "¿Dónde trabajas?", "Solo usamos tu correo y teléfono para responderte."],
+      s3: ["Tu desafío", "¿Cuál es el principal desafío que enfrenta tu empresa?", "Unas pocas líneas bastan. Así llegamos a la conversación con ideas."],
+      nome: ["Nombre", "Tu nombre"], sobrenome: ["Apellido", "Tu apellido"], cargo: ["Cargo", "Ej.: Gerente de Sostenibilidad"],
+      empresa: ["Empresa", "Nombre de la empresa"], email: ["Correo corporativo", "tu@empresa.com"],
+      telefone: ["Teléfono / WhatsApp", "+34 600 123 456"],
+      desafio: ["Cuéntanos", "Ej.: queremos involucrar a los colaboradores en el voluntariado, pero la adhesión es baja…"],
+      err: { nome: "Escribe tu nombre.", sobrenome: "Escribe tu apellido.", cargo: "Escribe tu cargo.", empresa: "Escribe el nombre de la empresa.",
+        email: "Escribe un correo válido.", telefone: "Escribe un teléfono con código de país.", desafio: "Cuéntanos un poco sobre el desafío." },
+      kicker: "Habla con nuestros expertos", step: "Paso {i} de {n}", back: "Volver", next: "Siguiente", send: "Enviar",
+      legal: "Al enviar, aceptas que Freehelper te contacte sobre tu solicitud. Tratamos tus datos conforme a la LGPD (ley brasileña de protección de datos).",
+      fail: "No pudimos enviar tu solicitud ahora.", mail: "Si prefieres, escribe a",
+    },
+  };
+  var T = TEXTS[LANG];
+
+  function field(name, type, extra) {
+    var f = { name: name, label: T[name][0], placeholder: T[name][1], type: type };
+    for (var k in extra) f[k] = extra[k];
+    return f;
+  }
 
   var STEPS = [
     {
-      key: "voce",
-      label: "Sobre você",
-      title: "Quem está falando com a gente?",
-      hint: "Leva menos de um minuto. Nossa equipe retorna em até 1 dia útil.",
+      key: "voce", label: T.s1[0], title: T.s1[1], hint: T.s1[2],
       fields: [
-        { name: "nome", label: "Nome", type: "text", autocomplete: "given-name", placeholder: "Seu nome" },
-        { name: "sobrenome", label: "Sobrenome", type: "text", autocomplete: "family-name", placeholder: "Seu sobrenome" },
-        { name: "cargo", label: "Cargo", type: "text", autocomplete: "organization-title", placeholder: "Ex.: Gerente de Sustentabilidade", full: true },
+        field("nome", "text", { autocomplete: "given-name" }),
+        field("sobrenome", "text", { autocomplete: "family-name" }),
+        field("cargo", "text", { autocomplete: "organization-title", full: true }),
       ],
     },
     {
-      key: "empresa",
-      label: "Sua empresa",
-      title: "Onde você atua?",
-      hint: "Usamos o e-mail e o telefone só para retornar o contato.",
+      key: "empresa", label: T.s2[0], title: T.s2[1], hint: T.s2[2],
       fields: [
-        { name: "empresa", label: "Empresa", type: "text", autocomplete: "organization", placeholder: "Nome da empresa", full: true },
-        { name: "email", label: "E-mail corporativo", type: "email", autocomplete: "email", placeholder: "voce@empresa.com.br", inputmode: "email" },
-        { name: "telefone", label: "Telefone / WhatsApp", type: "tel", autocomplete: "tel", placeholder: "(11) 99999-9999", inputmode: "tel" },
+        field("empresa", "text", { autocomplete: "organization", full: true }),
+        field("email", "email", { autocomplete: "email", inputmode: "email" }),
+        field("telefone", "tel", { autocomplete: "tel", inputmode: "tel" }),
       ],
     },
     {
-      key: "desafio",
-      label: "Seu desafio",
-      title: "Qual o principal desafio que estão enfrentando?",
-      hint: "Pode ser em poucas linhas. Isso ajuda a gente a chegar na conversa já com ideias.",
-      fields: [
-        { name: "desafio", label: "Conte para a gente", type: "textarea", placeholder: "Ex.: queremos engajar colaboradores em voluntariado, mas a adesão é baixa…", full: true },
-      ],
+      key: "desafio", label: T.s3[0], title: T.s3[1], hint: T.s3[2],
+      fields: [field("desafio", "textarea", { full: true })],
     },
   ];
 
   var RULES = {
-    nome: function (v) { return v.trim().length >= 2 || "Informe seu nome."; },
-    sobrenome: function (v) { return v.trim().length >= 2 || "Informe seu sobrenome."; },
-    cargo: function (v) { return v.trim().length >= 2 || "Informe seu cargo."; },
-    empresa: function (v) { return v.trim().length >= 2 || "Informe a empresa."; },
-    email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || "Digite um e-mail válido."; },
-    telefone: function (v) { return v.replace(/\D/g, "").length >= 10 || "Digite um telefone com DDD."; },
-    desafio: function (v) { return v.trim().length >= 5 || "Conte um pouco do desafio."; },
+    nome: function (v) { return v.trim().length >= 2 || T.err.nome; },
+    sobrenome: function (v) { return v.trim().length >= 2 || T.err.sobrenome; },
+    cargo: function (v) { return v.trim().length >= 2 || T.err.cargo; },
+    empresa: function (v) { return v.trim().length >= 2 || T.err.empresa; },
+    email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || T.err.email; },
+    telefone: function (v) { return v.replace(/\D/g, "").length >= 10 || T.err.telefone; },
+    desafio: function (v) { return v.trim().length >= 5 || T.err.desafio; },
   };
 
   /* ---------- UTM: guarda na sessão para não perder ao ir da home ao /cadastro ---------- */
@@ -112,17 +157,17 @@
 
     root.innerHTML =
       '<form novalidate>' +
-        '<div class="cad__top"><span class="cad__kicker">Fale com especialistas</span>' +
-        '<span class="cad__count">Etapa 1 de ' + STEPS.length + "</span></div>" +
+        '<div class="cad__top"><span class="cad__kicker">' + T.kicker + "</span>" +
+        '<span class="cad__count"></span></div>' +
         '<div class="cad__bar"><i></i></div>' +
         '<div class="cad__steps">' + STEPS.map(function (s) { return "<span>" + s.label + "</span>"; }).join("") + "</div>" +
         stepsHtml +
         '<input class="cad__hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />' +
         '<div class="cad__error" role="alert"></div>' +
-        '<p class="cad__legal">Ao enviar, você concorda em receber contato da Freehelper sobre sua solicitação. Tratamos seus dados conforme a LGPD.</p>' +
+        '<p class="cad__legal">' + T.legal + "</p>" +
         '<div class="cad__nav">' +
-          '<button type="button" class="btn btn--ghost cad__back">← Voltar</button>' +
-          '<button type="submit" class="btn btn--lime cad__next">Próxima <span class="arr">→</span><span class="spin"></span></button>' +
+          '<button type="button" class="btn btn--ghost cad__back">← ' + T.back + '</button>' +
+          '<button type="submit" class="btn btn--lime cad__next">' + T.next + ' <span class="arr">→</span><span class="spin"></span></button>' +
         "</div>" +
       "</form>";
   }
@@ -142,7 +187,8 @@
     var step = 0;
     var started = false;
 
-    root.querySelectorAll('input[name="telefone"]').forEach(function (inp) {
+    // máscara (11) 99999-9999 só no PT; em EN/ES o número pode ser de qualquer país
+    if (LANG === "pt") root.querySelectorAll('input[name="telefone"]').forEach(function (inp) {
       inp.addEventListener("input", function () { inp.value = maskPhone(inp.value); });
     });
 
@@ -161,9 +207,9 @@
         c.classList.toggle("is-done", k < i);
       });
       bar.style.width = ((i + 1) / STEPS.length) * 100 + "%";
-      count.textContent = "Etapa " + (i + 1) + " de " + STEPS.length;
+      count.textContent = T.step.replace("{i}", i + 1).replace("{n}", STEPS.length);
       back.classList.toggle("is-hidden", i === 0);
-      next.innerHTML = (i === STEPS.length - 1 ? "Enviar cadastro" : "Próxima") +
+      next.innerHTML = (i === STEPS.length - 1 ? T.send : T.next) +
         ' <span class="arr">→</span><span class="spin"></span>';
       errBox.classList.remove("is-on");
       if (focus) {
@@ -194,13 +240,15 @@
       data.utm = UTM;
       data.origem = origem;
       data.pagina = location.pathname;
+      data.idioma = LANG;
       return data;
     }
 
     function fail(msg) {
       root.classList.remove("is-sending");
-      errBox.innerHTML = (msg || "Não conseguimos enviar agora.") +
-        ' Se preferir, escreva para <a href="mailto:contato@freehelper.com.br">contato@freehelper.com.br</a>.';
+      // mensagens da API são em PT; fora do PT usa a genérica traduzida
+      errBox.innerHTML = ((LANG === "pt" && msg) || T.fail) +
+        " " + T.mail + ' <a href="mailto:contato@freehelper.com.br">contato@freehelper.com.br</a>.';
       errBox.classList.add("is-on");
     }
 

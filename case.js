@@ -65,7 +65,8 @@
         copy.classList.add("is-done");
         setTimeout(() => copy.classList.remove("is-done"), 1600);
       } catch (_) {
-        prompt("Copie o link:", location.href);
+        const lang = document.documentElement.lang.slice(0, 2);
+        prompt({ en: "Copy the link:", es: "Copia el enlace:" }[lang] || "Copie o link:", location.href);
       }
     });
   }

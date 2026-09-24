@@ -39,7 +39,8 @@ const digits = (v) => String(v ?? "").replace(/\D/g, "");
 function normalizePhone(raw) {
   let d = digits(raw);
   if (d.startsWith("00")) d = d.slice(2);
-  if ((d.length === 10 || d.length === 11) && !d.startsWith("55")) d = "55" + d;
+  // "+" = já veio com DDI (visitantes de /en/ e /es/); sem ele, assume Brasil
+  else if (!String(raw ?? "").trim().startsWith("+") && (d.length === 10 || d.length === 11) && !d.startsWith("55")) d = "55" + d;
   return d;
 }
 
