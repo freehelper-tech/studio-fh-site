@@ -231,3 +231,27 @@
   .glance__grid--6 .stat{padding:20px 16px 18px}
   .glance__grid--6 .stat b{font-size:clamp(1.25rem,6.4vw,1.6rem)}
 }
+
+/* ============================================================
+   DEPOIMENTO COM VÍDEO (reel vertical no lugar da foto)
+   ============================================================ */
+.testi__inner--reel{grid-template-columns:360px 1fr}
+.testi__reel{border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--line-2);
+  box-shadow:0 30px 80px -40px rgba(0,0,0,.9)}
+.testi__reel iframe{display:block;width:100%;height:640px;border:0}
+.testi__note{margin-top:22px;font-size:.95rem!important;font-weight:400!important;color:var(--muted)!important;letter-spacing:0!important}
+.cbody .press{margin-top:6px}
+@media (max-width:980px){.testi__inner--reel{grid-template-columns:1fr}.testi__reel{max-width:360px;width:100%;margin:0 auto}}
+
+/* ============================================================
+   EM REVISÃO — faixa de pendências (remover ao aprovar o case)
+   ============================================================ */
+.review{position:relative;z-index:5;padding:96px 0 0;margin-bottom:-80px}
+.review__box{background:#fff8d6;color:#3b3200;border:2px dashed #e0b400;border-radius:18px;padding:16px 22px;font-size:.92rem}
+.review__box summary{cursor:pointer;line-height:1.5}
+.review__box ol{margin:12px 0 4px 20px;display:grid;gap:6px}
+.review__box code{font-size:.82rem;background:rgba(0,0,0,.06);padding:.1em .35em;border-radius:5px}
+.review__pill{display:inline-block;background:#e0b400;color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.3em .7em;border-radius:999px;margin-right:6px}
+.is-pending,mark.is-pending{background:#fff1a8;color:#3b3200!important;border-radius:4px;padding:0 .25em}
+.is-pending-block{outline:2px dashed #e0b400;outline-offset:8px;border-radius:6px}

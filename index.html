@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 <meta name="theme-color" content="#03038c" />
-<link rel="stylesheet" href="styles.css?v=9" />
+<link rel="stylesheet" href="styles.css?v=10" />
 <link rel="stylesheet" href="cadastro.css?v=2" />
 </head>
 <body>
@@ -115,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="clientmark noimg" data-name="Ambev"><img src="assets/img/clients/ambev.png?v=6" alt="Ambev" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
       <span class="clientmark noimg" data-name="Gestamp"><img src="assets/img/clients/gestamp.png?v=6" alt="Gestamp" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
       <span class="clientmark noimg" data-name="Red Bull Bragantino"><img src="assets/img/clients/redbull-bragantino.png?v=6" alt="Red Bull Bragantino" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
-      <span class="clientmark noimg" data-name="Mapfre"><img src="assets/img/clients/mapfre.png?v=6" alt="Mapfre" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
+      <a class="clientmark clientmark--case noimg" data-name="Mapfre" href="case-fh/mapfre/" aria-label="Ler o case da Mapfre"><img src="assets/img/clients/mapfre.png?v=6" alt="Mapfre" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /><span class="clientmark__tag"><i></i>Ver case</span></a>
       <span class="clientmark noimg" data-name="Leve Saúde"><img src="assets/img/clients/levesaude.png?v=6" alt="Leve Saúde" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
       <span class="clientmark noimg" data-name="Argo"><img src="assets/img/clients/argo.png?v=6" alt="Argo" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
       <span class="clientmark noimg" data-name="Aché"><img src="assets/img/clients/ache.png?v=6" alt="Aché" onerror="this.closest('.clientmark').classList.add('noimg')" onload="this.closest('.clientmark').classList.remove('noimg')" /></span>
@@ -233,6 +233,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <div class="cases__track reveal" id="caseTrack">
+      <a class="case case--full" href="case-fh/mapfre/">
+        <div class="case__top"><span class="case__logo noimg" data-name="Mapfre"><img src="assets/img/clients/mapfre.png?v=6" alt="Mapfre" onerror="this.closest('.case__logo').classList.add('noimg')" onload="this.closest('.case__logo').classList.remove('noimg')" /></span><span class="case__badge"><i></i>Case completo</span></div>
+        <h3>Expert Mapfre</h3>
+        <p>Desenvolvemos um programa que conecta colaboradores e organizações sociais em todo o Brasil, fortalecendo engajamento, reputação e geração de impacto mensurável.</p>
+        <span class="case__link">Ler o case completo <span class="arr">→</span></span>
+      </a>
       <a class="case" href="#contato">
         <div class="case__top"><span class="case__logo noimg" data-name="Stone"><img src="assets/img/clients/stone.png?v=6" alt="Stone" onerror="this.closest('.case__logo').classList.add('noimg')" onload="this.closest('.case__logo').classList.remove('noimg')" /></span></div>
         <h3>Impulso Stone</h3>
@@ -255,12 +261,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="case__top"><span class="case__logo noimg" data-name="Red Bull Bragantino"><img src="assets/img/clients/redbull-bragantino.png?v=6" alt="Red Bull Bragantino" onerror="this.closest('.case__logo').classList.add('noimg')" onload="this.closest('.case__logo').classList.remove('noimg')" /></span></div>
         <h3>Mapeamento Territorial e Comunitário</h3>
         <p>Mapeamos comunidades, lideranças e oportunidades de impacto para construir relações de longo prazo, fortalecer a presença institucional e gerar valor compartilhado para a região.</p>
-        <span class="case__link">Ver case <span class="arr">→</span></span>
-      </a>
-      <a class="case" href="case-fh/mapfre/">
-        <div class="case__top"><span class="case__logo noimg" data-name="Mapfre"><img src="assets/img/clients/mapfre.png?v=6" alt="Mapfre" onerror="this.closest('.case__logo').classList.add('noimg')" onload="this.closest('.case__logo').classList.remove('noimg')" /></span></div>
-        <h3>Expert Mapfre</h3>
-        <p>Desenvolvemos um programa que conecta colaboradores e organizações sociais em todo o Brasil, fortalecendo engajamento, reputação e geração de impacto mensurável.</p>
         <span class="case__link">Ver case <span class="arr">→</span></span>
       </a>
     </div>
@@ -343,6 +343,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="earea"><span>Desenvolvimento Econômico Local</span><i class="arr-box">›</i></div>
         <div class="earea"><span>ESG e Impacto</span><i class="arr-box">›</i></div>
         <div class="earea"><span>Tecnologia e IA</span><i class="arr-box">›</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VÍDEO RB BRAGANTINO (light) ===================== -->
+<section class="voice section section--light" id="bragantino">
+  <div class="container voice__grid">
+    <div class="voice__copy reveal">
+      <span class="voice__logo"><img src="assets/img/clients/redbull-bragantino.png?v=6" alt="Red Bull Bragantino" /></span>
+      <h2 class="section__title">Quando um clube olha para o território, <span class="muted">o jogo ganha outro significado.</span></h2>
+      <p class="section__lead">Com o Red Bull Bragantino, mapeamos mais de 1.500 organizações de Bragança Paulista para decidir onde o clube atua, com quem e em que ordem. Dessa base nasceram ativações que reuniram 1.300 crianças e uma Rede de Embaixadores formada por lideranças da comunidade.</p>
+      <p class="voice__who"><b>No vídeo:</b> o CEO do Red Bull Bragantino fala sobre a parceria com o studio.fh.</p>
+      <a class="press" href="https://esginside.com.br/2026/09/10/freehelper-e-red-bull-bragantino-criam-rede-de-embaixadores-voluntarios-para-fortalecer-conexao-com-comunidades-de-braganca-paulista/" target="_blank" rel="noopener">
+        <span class="press__src">Na mídia · ESG Inside</span>
+        <span class="press__title">Freehelper e Red Bull Bragantino criam Rede de Embaixadores voluntários para fortalecer conexão com comunidades de Bragança Paulista</span>
+        <span class="press__link">Ler matéria <span class="arr">↗</span></span>
+      </a>
+    </div>
+    <div class="voice__media reveal">
+      <div class="reel">
+        <iframe src="https://www.instagram.com/reel/DV9hH55j08q/embed/" title="Vídeo: CEO do Red Bull Bragantino sobre a parceria com o studio.fh" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
       </div>
     </div>
   </div>
