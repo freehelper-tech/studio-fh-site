@@ -56,6 +56,19 @@
     track.scrollBy({ left: -step(), behavior: "smooth" })
   );
 
+  /* ---------- vídeo próprio: botão de play sobre o poster ---------- */
+  document.querySelectorAll(".vplayer").forEach((box) => {
+    const video = box.querySelector("video");
+    const btn = box.querySelector(".vplayer__play");
+    if (!video || !btn) return;
+    video.controls = false;
+    btn.addEventListener("click", () => {
+      video.controls = true;
+      video.play();
+    });
+    video.addEventListener("play", () => box.classList.add("is-playing"));
+  });
+
   /* ---------- reveal on scroll ---------- */
   const io = new IntersectionObserver(
     (entries) => {

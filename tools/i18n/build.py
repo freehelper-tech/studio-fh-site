@@ -27,7 +27,7 @@ PT = {"html": "pt-BR", "og": "pt_BR"}
 SKIP = r"<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->|<noscript\b.*?</noscript>"
 TOKEN = re.compile(SKIP + r"|<[^>]+>", re.S | re.I)
 ATTR = re.compile(r'\b(alt|aria-label|placeholder|title|content)="([^"]*)"')
-URL_ATTR = re.compile(r'\b(href|src)="([^"]*)"')
+URL_ATTR = re.compile(r'\b(href|src|poster)="([^"]*)"')
 META_TEXT = re.compile(r'(name|property)="(description|og:title|og:description|twitter:title|twitter:description)"')
 LETTER = re.compile(r"[A-Za-zÀ-ú]")
 BLOCK = re.compile(r"\n?<!-- i18n:start -->.*?<!-- i18n:end -->", re.S)
