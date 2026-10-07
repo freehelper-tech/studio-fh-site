@@ -20,7 +20,7 @@ from urllib.parse import urljoin, urlsplit
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 SITE = "https://studio.freehelper.com.br"
-PAGES = ["index.html", "cadastro/index.html", "case-fh/mapfre/index.html", "obrigado-empresa/index.html"]
+PAGES = ["index.html", "cadastro/index.html", "case-fh/mapfre/index.html", "case-fh/red-bull-bragantino/index.html", "obrigado-empresa/index.html"]
 LANGS = {"en": {"html": "en", "og": "en_US"}, "es": {"html": "es", "og": "es_ES"}}
 PT = {"html": "pt-BR", "og": "pt_BR"}
 
