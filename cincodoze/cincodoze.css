@@ -37,12 +37,12 @@
 .c-kicker{display:inline-block;margin-bottom:16px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 
 /* ---------- problema: − / + ---------- */
-.c-pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.c-pains{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .c-pain{position:relative;border-radius:var(--r-lg);padding:28px 24px 26px;border:1px solid rgba(11,12,46,.08);background:#f6f7fd;overflow:hidden}
 .c-pain__sign{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;font-size:1.7rem;font-weight:700;line-height:1}
 .c-pain h3{margin-top:22px;font-size:1.5rem;letter-spacing:-.02em}
 .c-pain p{margin-top:10px;font-size:.96rem;color:var(--ink-soft)}
-.c-pain--down .c-pain__sign{background:#fde9ea;color:#d1343b}
+.c-pain .c-pain__sign{background:#fde9ea;color:#d1343b}
 .c-pain--up{background:var(--indigo-900);border-color:transparent;color:#fff}
 .c-pain--up p{color:rgba(231,233,255,.75)}
 .c-pain--up .c-pain__sign{background:var(--lime);color:#0b1500}
@@ -238,3 +238,58 @@
 /* preço fica pra conversa (decisão 08/10) */
 .c-offer__price span{font-size:1rem;font-weight:600;color:var(--ink-dark)}
 .c-offer--featured .c-offer__price span{color:var(--lime)}
+
+/* ============================================================
+   v3 (08/10): sem pílulas "eyebrow", dados com fonte, seções novas
+   ============================================================ */
+.c-lime{color:var(--lime)}
+.c-hero__kicker{margin-top:18px;font-size:clamp(1.3rem,2.4vw,1.75rem);font-weight:700;letter-spacing:-.02em;color:#fff}
+.c-kicker--lime{color:var(--lime)}
+
+/* problema + dado principal */
+.c-problem{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end;margin-bottom:56px}
+.c-stat{background:var(--indigo-900);color:#fff;border-radius:var(--r-lg);padding:30px 28px}
+.c-stat b{display:block;font-size:clamp(3.4rem,6vw,4.6rem);line-height:1;letter-spacing:-.04em;color:var(--lime)}
+.c-stat b small{font-size:.38em;letter-spacing:0;color:#fff;font-weight:600}
+.c-stat p{margin-top:12px;font-size:1.08rem;color:rgba(231,233,255,.88)}
+cite{display:block;margin-top:14px;font-style:normal;font-size:.74rem;letter-spacing:.02em;color:var(--ink-soft);opacity:.85}
+.c-stat cite{color:rgba(231,233,255,.55)}
+.c-while{font-size:1.25rem;font-weight:700;color:var(--ink-dark);margin-bottom:18px}
+.c-pain p b{color:var(--ink-dark)}
+
+/* o que muda (azul) */
+.c-gains{background:radial-gradient(50% 80% at 100% 0%,rgba(77,84,255,.6),transparent 70%),var(--indigo-900)}
+.c-gains__grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.c-gain{border-radius:var(--r-lg);padding:30px 28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+.c-gain h3{margin-top:20px;font-size:1.7rem;letter-spacing:-.02em}
+.c-gain p{margin-top:10px;color:rgba(231,233,255,.8);font-size:1.02rem}
+.c-gain p b{color:var(--lime)}
+.c-gain cite{color:rgba(231,233,255,.5)}
+.c-pain__sign--up{background:var(--lime)!important;color:#0b1500!important}
+
+/* por que o studio */
+.c-why{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.c-why__list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.c-why__list div{padding:22px 20px;border-radius:var(--r);background:#f3f4fb;border-top:3px solid var(--lime)}
+.c-why__list b{display:block;font-size:1.08rem;color:var(--ink-dark)}
+.c-why__list span{display:block;margin-top:4px;font-size:.9rem;color:var(--ink-soft)}
+
+/* ofertas enxutas */
+.c-offer .btn{margin-top:auto}
+.c-offer__meta{margin-bottom:24px}
+
+/* como funciona curto */
+.c-fast{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.c-fast .c-budget{margin-top:0}
+
+@media (max-width:980px){
+  .c-problem,.c-why,.c-fast{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:760px){
+  .c-pains,.c-gains__grid,.c-why__list{grid-template-columns:1fr}
+  .c-why__list{grid-template-columns:1fr 1fr}
+  .c-problem{margin-bottom:36px}
+  .c-hero__title{font-size:2.6rem}
+}
+.q-result__badge{background:none;padding:0;border-radius:0;color:var(--lime)}
+@media (max-width:760px){.c-hero .hero__visual{display:none}}

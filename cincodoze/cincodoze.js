@@ -106,8 +106,8 @@
   function renderIntro() {
     box.innerHTML = head("Mapa de Propósito", 0) +
       '<div class="cad__step is-active q-intro">' +
-      '<h3 class="cad__title">Em que estágio está a cultura de impacto do seu time?</h3>' +
-      "<p>5 perguntas rápidas. No final você vê o formato mais indicado pra sua empresa e pode receber o Mapa completo com a nossa equipe.</p>" +
+      '<h3 class="cad__title">Qual o formato ideal para o seu time?</h3>' +
+      "<p>5 perguntas, resultado na hora.</p>" +
       '<button class="btn btn--lime btn--lg" data-act="start">Começar agora <span class="arr">→</span></button><br />' +
       '<button class="q-intro__skip" data-act="skip">Já sei o que quero, quero falar com o time</button>' +
       "</div>";
