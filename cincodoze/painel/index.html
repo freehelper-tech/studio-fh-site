@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Painel 5.12 | studio.fh</title>
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<meta name="theme-color" content="#03038c" />
+<link rel="stylesheet" href="../../styles.css?v=11" />
+<link rel="stylesheet" href="painel.css?v=2" />
+</head>
+<body class="pn">
+
+<!-- login -->
+<section class="pn-login" id="login">
+  <form class="pn-login__card" id="loginForm">
+    <img src="../../assets/img/logo-white.png?v=2" alt="studio.fh" />
+    <h1>Painel da Campanha 5.12</h1>
+    <p>Acesso interno do time studio.fh.</p>
+    <input type="password" name="senha" placeholder="Senha" autocomplete="current-password" required />
+    <button class="btn btn--lime" type="submit">Entrar <span class="arr">→</span></button>
+    <span class="pn-login__err" id="loginErr"></span>
+  </form>
+</section>
+
+<!-- app -->
+<div class="pn-app" id="app" hidden>
+  <header class="pn-top">
+    <div class="pn-top__inner">
+      <a href="../" class="pn-top__brand"><img src="../../assets/img/logo-white.png?v=2" alt="studio.fh" /><span>Campanha 5.12</span></a>
+      <nav class="pn-tabs" role="tablist">
+        <button class="is-on" data-tab="conversao">Conversão</button>
+        <button data-tab="audiencia">Audiência</button>
+        <button data-tab="manual">Manual</button>
+        <a href="../apresentacao/" target="_blank" rel="noopener" class="pn-tabs__ext">Apresentação ↗</a>
+      </nav>
+      <button class="pn-top__out" id="sair">Sair</button>
+    </div>
+  </header>
+
+  <main class="pn-main">
+    <!-- CONVERSÃO -->
+    <section class="pn-pane is-on" data-pane="conversao">
+      <div class="pn-head">
+        <div><h2>Conversão</h2><p class="pn-sub">Leads da LP studio.freehelper.com.br/cincodoze · atualiza a cada 60s</p></div>
+        <span class="pn-count" id="countdown"></span>
+      </div>
+      <div class="pn-kpis" id="kpis"></div>
+      <div class="pn-grid">
+        <div class="pn-card pn-card--wide"><h3>Leads por dia</h3><div id="chartDias" class="pn-chart"></div></div>
+        <div class="pn-card"><h3>Formato escolhido</h3><div id="chartFormato"></div></div>
+        <div class="pn-card"><h3>Indicação do Mapa</h3><div id="chartRec"></div></div>
+        <div class="pn-card"><h3>Tamanho da empresa</h3><div id="chartColab"></div></div>
+        <div class="pn-card"><h3>Origem (utm_source)</h3><div id="chartOrigem"></div></div>
+      </div>
+      <div class="pn-card pn-card--table">
+        <div class="pn-card__row"><h3>Leads</h3><span class="pn-sub">contato completo no Monday</span></div>
+        <div class="pn-table-wrap"><table class="pn-table" id="tabela"></table></div>
+      </div>
+    </section>
+
+    <!-- AUDIÊNCIA -->
+    <section class="pn-pane" data-pane="audiencia">
+      <div class="pn-head"><div><h2>Audiência</h2><p class="pn-sub" id="gaSub">Google Analytics 4 · propriedade Studio FH · páginas /cincodoze</p></div></div>
+      <div class="pn-kpis" id="gaKpis"></div>
+      <div class="pn-grid">
+        <div class="pn-card pn-card--wide"><h3>Visualizações por dia</h3><div id="gaDias" class="pn-chart"></div></div>
+        <div class="pn-card"><h3>Funil</h3><div id="gaFunil"></div></div>
+        <div class="pn-card"><h3>De onde vêm</h3><div id="gaOrigens"></div></div>
+        <div class="pn-card"><h3>Dispositivos</h3><div id="gaDevices"></div></div>
+      </div>
+      <p class="pn-note" id="gaNota"></p>
+    </section>
+
+    <!-- MANUAL -->
+    <section class="pn-pane" data-pane="manual">
+      <div class="pn-manual">
+        <aside class="pn-manual__toc" id="toc"></aside>
+        <article class="pn-manual__body" id="manual"></article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="painel.js?v=2"></script>
+</body>
+</html>

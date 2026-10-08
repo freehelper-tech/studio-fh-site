@@ -1,0 +1,8 @@
+{
+  "name": "studio-fh-site",
+  "private": true,
+  "description": "Site estático do studio.fh (GitHub Pages) + funções Vercel em /api",
+  "dependencies": {
+    "mssql": "^11.0.1"
+  }
+}

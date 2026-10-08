@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>5.12 · Apresentação | studio.fh</title>
+<link rel="icon" href="../../favicon.ico" sizes="any" />
+<meta name="theme-color" content="#03038c" />
+<link rel="stylesheet" href="../../styles.css?v=11" />
+<link rel="stylesheet" href="apresentacao.css?v=2" />
+</head>
+<body class="ap">
+
+<div class="ap-bg" aria-hidden="true">
+  <div class="aurora">
+    <span class="aurora__blob b1"></span><span class="aurora__blob b2"></span><span class="aurora__blob b3"></span>
+  </div>
+</div>
+
+<header class="ap-top">
+  <img class="ap-logo-w" src="../../assets/img/logo-white.png?v=2" alt="studio.fh" />
+  <img class="ap-logo-b" src="../../assets/img/logo-blue.png?v=2" alt="" />
+  <span class="ap-top__tag">Campanha 5.12 <b data-empresa-tag></b></span>
+  <span class="ap-top__count" id="counter"></span>
+</header>
+
+<main class="ap-deck" id="deck">
+
+  <!-- 1. CAPA -->
+  <section class="ap-slide ap-slide--cover" data-title="Capa">
+    <span class="eyebrow"><span class="dot"></span> 05.12 · Dia Internacional do Voluntariado</span>
+    <h1>Time sem propósito<br />não dá <span class="grad">resultado.</span></h1>
+    <p class="ap-lead">Construindo cultura interna através de impacto social.</p>
+    <label class="ap-empresa">
+      <span>Empresa</span>
+      <input id="empresa" type="text" placeholder="Digite o nome da empresa" autocomplete="off" />
+    </label>
+  </section>
+
+  <!-- 2. A DOR -->
+  <section class="ap-slide ap-slide--light" data-title="O problema">
+    <span class="ap-kicker">o problema</span>
+    <h2>Todo fim de ano é igual.<br /><span class="muted">E em janeiro nada mudou.</span></h2>
+    <p class="ap-lead">Confraternização, amigo secreto, massa de pizza. Diverte por uma noite. Enquanto isso:</p>
+    <div class="ap-pains">
+      <div class="ap-pain ap-pain--down"><span>−</span><b>Turnover</b><small>gente boa indo embora</small></div>
+      <div class="ap-pain ap-pain--down"><span>−</span><b>Burnout</b><small>time no limite, sem pertencimento</small></div>
+      <div class="ap-pain ap-pain--up"><span>+</span><b>Engajamento</b><small>quem vive propósito veste a camisa</small></div>
+      <div class="ap-pain ap-pain--up"><span>+</span><b>Resultado</b><small>a conta que fecha no fim do ano</small></div>
+    </div>
+  </section>
+
+  <!-- 3. POR QUE AGORA -->
+  <section class="ap-slide ap-slide--indigo" data-title="Por que agora">
+    <span class="ap-kicker ap-kicker--lime">por que agora</span>
+    <div class="ap-now">
+      <div><b>2026</b><span>Ano Internacional do Voluntariado (ONU)</span></div>
+      <div><b>05.12</b><span>Dia Internacional do Voluntariado</span></div>
+      <div><b>1 dia</b><span>para transformar o fim de ano em cultura</span></div>
+    </div>
+    <p class="ap-quote">Uma data que <span class="hl">não se repete</span>, um orçamento de 2026 que ainda pode virar impacto, e um time que vai começar 2027 com propósito.</p>
+  </section>
+
+  <!-- 4. A ESCADA -->
+  <section class="ap-slide ap-slide--light" data-title="Os formatos">
+    <span class="ap-kicker">os formatos</span>
+    <h2>Três degraus de uma<br /><span class="muted">cultura de impacto.</span></h2>
+    <div class="ap-ladder">
+      <div class="ap-step" data-k="talk"><span>01 · Despertar</span><b>Talk de Impacto</b><small>60–90 min · todo o time</small><p>Planta a semente e descobre quem quer puxar o movimento.</p></div>
+      <div class="ap-step" data-k="embaixadores"><span>02 · Mobilizar</span><b>Jornada de Embaixadores</b><small>meio período · até 40 pessoas</small><p>Co-cria as causas da empresa e forma quem vai liderar.</p></div>
+      <div class="ap-step ap-step--hl" data-k="hub"><span>03 · Transformar</span><b>Hub de Impacto</b><small>1 dia · até 60 pessoas</small><p>O time resolve desafios reais de ONGs. Team building que deixa legado.</p></div>
+    </div>
+    <p class="ap-hint">Qual é o degrau certo para vocês? Vamos descobrir juntos →</p>
+  </section>
+
+  <!-- 5. MAPA AO VIVO -->
+  <section class="ap-slide ap-slide--mapa" data-title="Mapa de Propósito">
+    <div class="ap-mapa">
+      <div class="ap-mapa__q" id="mapaQ"></div>
+      <aside class="ap-mapa__live">
+        <span class="ap-kicker ap-kicker--lime">ao vivo</span>
+        <h3>Mapa de Propósito<span data-empresa-de></span></h3>
+        <div id="mapaBars"></div>
+        <ol class="ap-mapa__dots" id="mapaDots"></ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 6. RESULTADO -->
+  <section class="ap-slide ap-slide--result" data-title="Formato ideal">
+    <span class="ap-kicker ap-kicker--lime">formato ideal<span data-empresa-para></span></span>
+    <div id="resultado"></div>
+  </section>
+
+  <!-- 7. COMO SERIA O SEU DIA -->
+  <section class="ap-slide ap-slide--light" data-title="Como seria o dia">
+    <div class="ap-row">
+      <div><span class="ap-kicker">na prática</span><h2>Como seria<br /><span class="muted">o seu dia.</span></h2></div>
+      <div class="ap-switch" data-switch></div>
+    </div>
+    <div id="dia"></div>
+  </section>
+
+  <!-- 8. ENTREGAS -->
+  <section class="ap-slide ap-slide--light" data-title="O que vocês levam">
+    <div class="ap-row">
+      <div><span class="ap-kicker">o que vocês levam</span><h2>Um dia de impacto.<br /><span class="muted">Efeito o ano inteiro.</span></h2></div>
+      <div class="ap-switch" data-switch></div>
+    </div>
+    <div id="entregas"></div>
+  </section>
+
+  <!-- 9. LINHA DO TEMPO -->
+  <section class="ap-slide ap-slide--light" data-title="Linha do tempo">
+    <div class="ap-row">
+      <div><span class="ap-kicker">linha do tempo</span><h2>Do sim<br /><span class="muted">ao dia D.</span></h2></div>
+      <label class="ap-date"><span>Data do evento</span><input type="date" id="dataEvento" min="2026-11-16" max="2026-12-18" value="2026-12-04" /></label>
+    </div>
+    <div id="timeline"></div>
+  </section>
+
+  <!-- 10. INVESTIMENTO -->
+  <section class="ap-slide ap-slide--indigo" data-title="Investimento">
+    <span class="ap-kicker ap-kicker--lime">investimento</span>
+    <div id="investimento"></div>
+  </section>
+
+  <!-- 11. PRÓXIMOS PASSOS -->
+  <section class="ap-slide ap-slide--cover" data-title="Próximos passos">
+    <span class="eyebrow"><span class="dot"></span> próximos passos</span>
+    <h2 class="ap-big">Vamos construir<br />o seu <span class="grad">5.12</span>?</h2>
+    <ol class="ap-next">
+      <li><b>Hoje</b><span>Proposta com formato, data e escopo no seu e-mail</span></li>
+      <li><b>Esta semana</b><span>Conversa rápida com quem aprova</span></li>
+      <li><b>Até 05/11</b><span>Assinatura com bônus: kit de comunicação interna + prioridade de data</span></li>
+      <li><b>Dezembro</b><span>O dia. A gente opera tudo.</span></li>
+    </ol>
+    <p class="ap-contact">contato@freehelper.com.br · studio.freehelper.com.br/cincodoze</p>
+  </section>
+
+</main>
+
+<nav class="ap-nav">
+  <button id="prev" aria-label="Anterior">←</button>
+  <div class="ap-nav__dots" id="dots"></div>
+  <button id="next" aria-label="Próximo">→</button>
+  <button id="full" class="ap-nav__full" title="Tela cheia (F)">⤢</button>
+</nav>
+
+<script src="../mapa.js?v=2"></script>
+<script src="apresentacao.js?v=2"></script>
+</body>
+</html>
