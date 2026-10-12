@@ -67,7 +67,9 @@ async function resumo() {
   let quando = atual ? atual.criado_em : null;
   let aviso = null;
 
-  if (idade > VALIDADE_MS && hoje < MAX_POR_DIA) {
+  // retrato zerado (Clarity ainda processando) envelhece mais rápido: tenta de novo em 1h
+  const validade = dados && dados.resumo && dados.resumo.sessoes ? VALIDADE_MS : 3600 * 1000;
+  if (idade > validade && hoje < MAX_POR_DIA) {
     try {
       const bruto = await buscar();
       dados = { resumo: resumir(bruto), bruto };
