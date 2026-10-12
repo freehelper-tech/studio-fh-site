@@ -5,6 +5,7 @@
  *   GET  ?acao=dados   (Bearer token)      → conversão (dbo.leads, usuário só-leitura)
  *   GET  ?acao=ga      (Bearer token)      → audiência da LP no GA4
  *   GET  ?acao=manual  (Bearer token)      → manual interno + preços (não ficam no site público)
+ *   GET  ?acao=clarity (Bearer token)      → comportamento na LP (Microsoft Clarity, últimos 3 dias)
  *
  * Variáveis: C512_PAINEL_SENHA, C512_SESSION_SECRET (+ as de db.js e ga4.js)
  */
@@ -12,6 +13,7 @@ const crypto = require("crypto");
 const { pool } = require("./_cincodoze/db");
 const ga4 = require("./_cincodoze/ga4");
 const manual = require("./_cincodoze/manual");
+const clarity = require("./_cincodoze/clarity");
 
 const LANCAMENTO = "2026-10-13";
 const ALLOWED_ORIGINS = /^https:\/\/(studio\.freehelper\.com\.br|[a-z0-9-]+\.vercel\.app)$|^http:\/\/localhost(:\d+)?$/;
@@ -94,6 +96,7 @@ module.exports = async (req, res) => {
     if (acao === "dados") return res.status(200).json({ ok: true, ...(await dados()) });
     if (acao === "ga") return res.status(200).json({ ok: true, desde: LANCAMENTO, ...(await ga4.resumo(LANCAMENTO)) });
     if (acao === "manual") return res.status(200).json({ ok: true, ...manual });
+    if (acao === "clarity") return res.status(200).json({ ok: true, ...(await clarity.resumo()) });
     return res.status(400).json({ ok: false, error: "Ação inválida." });
   } catch (err) {
     console.error("[cincodoze-painel]", acao, err);

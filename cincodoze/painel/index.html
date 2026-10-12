@@ -8,7 +8,7 @@
 <link rel="icon" href="../../favicon.ico" sizes="any" />
 <meta name="theme-color" content="#03038c" />
 <link rel="stylesheet" href="../../styles.css?v=11" />
-<link rel="stylesheet" href="painel.css?v=2" />
+<link rel="stylesheet" href="painel.css?v=3" />
 </head>
 <body class="pn">
 
@@ -71,6 +71,17 @@
         <div class="pn-card"><h3>Dispositivos</h3><div id="gaDevices"></div></div>
       </div>
       <p class="pn-note" id="gaNota"></p>
+
+      <div class="pn-head pn-head--sec">
+        <div><h2>Comportamento na página</h2><p class="pn-sub" id="clSub">Microsoft Clarity · últimos 3 dias</p></div>
+        <a class="pn-link" href="https://clarity.microsoft.com/" target="_blank" rel="noopener">Ver gravações e mapas de calor ↗</a>
+      </div>
+      <div class="pn-kpis" id="clKpis"><p class="pn-empty">Carregando…</p></div>
+      <div class="pn-grid">
+        <div class="pn-card"><h3>Sinais de atrito <small class="pn-sub">% das sessões</small></h3><div id="clAtrito"></div></div>
+        <div class="pn-card"><h3>Dispositivos</h3><div id="clDevices"></div></div>
+      </div>
+      <p class="pn-note" id="clNota"></p>
     </section>
 
     <!-- MANUAL -->
@@ -83,6 +94,6 @@
   </main>
 </div>
 
-<script src="painel.js?v=2"></script>
+<script src="painel.js?v=3"></script>
 </body>
 </html>

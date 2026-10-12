@@ -57,6 +57,7 @@
     document.querySelectorAll("[data-pane]").forEach(function (p) { p.classList.toggle("is-on", p.dataset.pane === tab); });
     try { history.replaceState(null, "", "#" + tab); } catch (e) {}
     if (tab === "audiencia" && !carregado.ga) carregarGa();
+    if (tab === "audiencia" && !carregado.clarity) carregarClarity();
     if (tab === "manual" && !carregado.manual) carregarManual();
   }
 
@@ -131,6 +132,33 @@
     }).catch(function (ex) {
       carregado.ga = false;
       $("#gaKpis").innerHTML = '<p class="pn-empty">Não foi possível carregar o GA4 (' + esc(ex.message) + ").</p>";
+    });
+  }
+
+  /* ---------- comportamento (Clarity) ---------- */
+  function carregarClarity() {
+    carregado.clarity = true;
+    get("clarity").then(function (c) {
+      if (!c.ok) throw new Error(c.error);
+      var n = function (v) { return v == null ? "—" : Math.round(v).toLocaleString("pt-BR"); };
+      var seg = function (v) { if (v == null) return "—"; v = Math.round(v); return (v >= 60 ? Math.floor(v / 60) + "m" : "") + String(v % 60).padStart(v >= 60 ? 2 : 1, "0") + "s"; };
+      var porSessao = function (v) { return c.sessoes ? seg(v / c.sessoes) : "—"; };
+      $("#clKpis").innerHTML =
+        kpi("Sessões", n(c.sessoes), c.bots ? n(c.bots) + " de robôs" : "", true) +
+        kpi("Usuários", n(c.usuarios)) +
+        kpi("Rolagem média", c.rolagem == null ? "—" : Math.round(c.rolagem) + "%", "da página vista") +
+        kpi("Tempo ativo", porSessao(c.tempoAtivo), "por sessão");
+      var atr = {};
+      [["Cliques de raiva", c.rageClicks], ["Cliques sem efeito", c.deadClicks], ["Voltou rápido", c.quickback], ["Rolagem excessiva", c.rolagemExcessiva], ["Erros de script", c.errosScript]]
+        .forEach(function (x) { if (x[1] != null) atr[x[0]] = Math.round(x[1] * 10) / 10; });
+      bars($("#clAtrito"), atr);
+      var dv = {}; (c.dispositivos || []).forEach(function (d) { dv[d.nome] = d.sessoes; }); bars($("#clDevices"), dv);
+      var quando = new Date(c.atualizado);
+      $("#clNota").textContent = "Retrato de " + quando.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) +
+        ". A API do Clarity só entrega os últimos 3 dias e limita consultas, então o painel atualiza no máximo a cada 3h." + (c.aviso ? " " + c.aviso : "");
+    }).catch(function (ex) {
+      carregado.clarity = false;
+      $("#clKpis").innerHTML = '<p class="pn-empty">Clarity indisponível (' + esc(ex.message) + ").</p>";
     });
   }
 
