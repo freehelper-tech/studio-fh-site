@@ -33,7 +33,7 @@ function resumir(bruto) {
   const pct = (nome) => num(primeiro(nome).sessionsWithMetricPercentage);
   const lista = (nome, chave) =>
     (m[nome] || [])
-      .map((i) => ({ nome: i[chave] || i.name || "—", sessoes: num(i.sessionsCount) || 0 }))
+      .map((i) => ({ nome: i[chave] || i.name || i[nome] || "—", sessoes: num(i.sessionsCount) || 0 }))
       .sort((a, b) => b.sessoes - a.sessoes)
       .slice(0, 6);
   return {
