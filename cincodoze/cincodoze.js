@@ -17,6 +17,8 @@
   function push(evt) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(evt);
+    // mesmo evento no Clarity, para filtrar gravações (ex.: quem virou lead)
+    try { if (window.clarity) window.clarity("event", evt.event); } catch (e) {}
   }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
