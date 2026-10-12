@@ -32,8 +32,8 @@
       gatilhos: [["preparação", "2 semanas"], ["participantes", "até 40"], ["do lado de vocês", "ponto focal + espaço"]],
     },
     hub: {
-      nome: "Hub de Impacto", nivel: "Transformar", prep: 21, quando: "1 dia · presencial · até 60 colaboradores em squads",
-      etapas: ["Curadoria das ONGs alinhadas às causas de vocês", "Seleção dos desafios reais que o time vai resolver", "Design conjunto da sessão com o RH", "O dia do Hub: squads, mentoria e pitch", "Relatório final de impacto, pronto para o ESG"],
+      nome: "Oficina de Impacto", nivel: "Transformar", prep: 21, quando: "1 dia · presencial · até 60 colaboradores em squads",
+      etapas: ["Curadoria das ONGs alinhadas às causas de vocês", "Seleção dos desafios reais que o time vai resolver", "Design conjunto da sessão com o RH", "O dia da Oficina: squads, mentoria e pitch", "Relatório final de impacto, pronto para o ESG"],
       agenda: [["9:00", "Abertura: a causa e as regras do jogo"], ["9:30", "ONGs apresentam seus desafios ao vivo"], ["10:00", "Squads mistos mergulham no problema"], ["11:00", "Mão na massa com mentoria"], ["14:00", "Refino e preparação do pitch"], ["15:00", "Pitch das soluções para as ONGs"], ["15:45", "Celebração e compromisso"]],
       entregas: [["Soluções reais entregues", "3 a 5 ONGs com desafios resolvidos pelo time"], ["Soft skills na prática", "colaboração, comunicação e liderança sob pressão real"], ["Silos quebrados", "squads com gente de áreas diferentes"], ["Relatório de impacto", "horas, organizações, ODS e depoimentos para o ESG"], ["Uma história para contar", "conteúdo para comunicação interna e externa"]],
       gatilhos: [["preparação", "3 semanas"], ["participantes", "até 60"], ["do lado de vocês", "ponto focal + espaço"]],
@@ -120,7 +120,7 @@
     var r = M.calcular(st.respostas);
     var max = Math.max(r.pontos.T, r.pontos.E, r.pontos.L, 1);
     var algum = Object.keys(st.respostas).length > 0;
-    $("#mapaBars").innerHTML = [["L", "Hub de Impacto", "Transformar"], ["E", "Jornada de Embaixadores", "Mobilizar"], ["T", "Talk de Impacto", "Despertar"]].map(function (b) {
+    $("#mapaBars").innerHTML = [["L", "Oficina de Impacto", "Transformar"], ["E", "Jornada de Embaixadores", "Mobilizar"], ["T", "Talk de Impacto", "Despertar"]].map(function (b) {
       var top = algum && b[0] === r.chave;
       return '<div class="ap-live' + (top ? " is-top" : "") + '"><div class="ap-live__row"><b>' + b[1] + "</b><small>" + b[2] + "</small></div><i><em style=\"width:" + (r.pontos[b[0]] / max) * 100 + '%"></em></i></div>';
     }).join("");

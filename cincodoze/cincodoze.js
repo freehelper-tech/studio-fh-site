@@ -107,7 +107,7 @@
   var box = document.getElementById("quiz");
   var state = { passo: -1, respostas: {}, resultado: null, escolha: "", iniciou: false };
   var LETRAS = ["A", "B", "C", "D", "E"];
-  var NOMES = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Hub de Impacto", personalizado: "Projeto personalizado" };
+  var NOMES = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Oficina de Impacto", personalizado: "Projeto personalizado" };
 
   function head(label, frac) {
     return '<div class="cad__top"><span class="cad__kicker">' + label + '</span>' +
@@ -178,7 +178,7 @@
   function renderResultado() {
     var r = state.resultado;
     var max = Math.max(r.pontos.T, r.pontos.E, r.pontos.L) || 1;
-    var bars = [["L", "Hub de Impacto"], ["E", "Embaixadores"], ["T", "Talk de Impacto"]].map(function (b) {
+    var bars = [["L", "Oficina de Impacto"], ["E", "Embaixadores"], ["T", "Talk de Impacto"]].map(function (b) {
       var pct = Math.round((r.pontos[b[0]] / max) * 100);
       return '<div class="q-bar' + (b[0] === r.chave ? " is-top" : "") + '"><span>' + b[1] + '</span><i><span style="width:' + pct + '%"></span></i><span>' + pct + "%</span></div>";
     }).join("");
@@ -233,6 +233,43 @@
       go(Math.max(0, state.passo - 1));
     }
   });
+
+  /* ============================================================
+     POP-UP DE SAÍDA: quem vai sair sem converter vê o convite para /dados/.
+     Desktop: mouse sai pelo topo da janela. Celular: rolada rápida pra cima
+     depois de ter descido bastante. Uma vez por sessão.
+     ============================================================ */
+  var exit = document.getElementById("saida");
+  var EXIT_KEY = "c512_exit";
+  var inicio = Date.now();
+  function exitJaVisto() { try { return sessionStorage.getItem(EXIT_KEY); } catch (e) { return "1"; } }
+  function abrirExit(gatilho) {
+    if (!exit || !exit.hidden || exitJaVisto() || Date.now() - inicio < 8000) return;
+    if (!document.getElementById("contato").hidden) return;
+    try { sessionStorage.setItem(EXIT_KEY, "1"); } catch (e) {}
+    exit.hidden = false;
+    document.body.classList.add("c-modal-open");
+    push({ event: "cincodoze_exit_view", gatilho: gatilho });
+  }
+  function fecharExit() { exit.hidden = true; document.body.classList.remove("c-modal-open"); }
+  document.addEventListener("mouseout", function (e) {
+    if (!e.relatedTarget && e.clientY <= 0) abrirExit("mouse");
+  });
+  var ultY = window.scrollY, ultT = Date.now(), maxY = 0;
+  window.addEventListener("scroll", function () {
+    var y = window.scrollY, t = Date.now();
+    maxY = Math.max(maxY, y);
+    var desceuBastante = maxY > document.body.scrollHeight * 0.35;
+    if (window.matchMedia("(pointer: coarse)").matches && desceuBastante && ultY - y > 140 && t - ultT < 250) abrirExit("scroll");
+    ultY = y; ultT = t;
+  }, { passive: true });
+  if (exit) {
+    exit.addEventListener("click", function (e) {
+      if (e.target === exit || e.target.closest("[data-exit-fechar]")) fecharExit();
+      if (e.target.closest("[data-exit-recusa]")) { push({ event: "cincodoze_exit_recusa" }); fecharExit(); }
+      if (e.target.closest("[data-exit-ir]")) push({ event: "cincodoze_exit_click" });
+    });
+  }
 
   /* ============================================================
      CAMINHO DIRETO: botões [data-contato="<formato>"] abrem o formulário
@@ -324,6 +361,7 @@
           if (!res.ok) throw new Error(res.error || "Falha no envio");
           push({ event: "cincodoze_lead", formato: data.formato, mapa_formato: data.recomendacao, form_origem: data.origem });
           root.innerHTML = doneHtml(data.nome);
+          try { sessionStorage.setItem(EXIT_KEY, "lead"); } catch (e) {}
         })
         .catch(function (ex) {
           btn.disabled = false;
@@ -336,4 +374,10 @@
   }
 
   go(-1);
+
+  var qsContato = new URLSearchParams(location.search).get("contato");
+  if (qsContato !== null) {
+    if (!NOMES[qsContato]) qsContato = "";
+    setTimeout(function () { abrirContato(qsContato, "link"); }, 300);
+  }
 })();

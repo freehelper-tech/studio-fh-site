@@ -325,3 +325,16 @@ body.c-modal-open{overflow:hidden}
 .btn--dark-ink:hover{background:var(--blue);transform:translateY(-2px)}
 @media (max-width:980px){.c-why{grid-template-columns:1fr}}
 @media (max-width:760px){.c-custom{padding:22px 20px}.c-custom .btn{width:100%;justify-content:center;white-space:normal}.c-logos--press img{height:30px}.c-wordmark{font-size:1.2rem}}
+
+/* ---------- v6: pop-up de saída ---------- */
+.c-exit{position:fixed;inset:0;z-index:210;display:grid;place-items:center;padding:20px;background:rgba(3,3,30,.78);backdrop-filter:blur(6px)}
+.c-exit[hidden]{display:none}
+.c-exit__card{position:relative;width:min(520px,100%);text-align:center;padding:42px 34px 30px;border-radius:24px;color:#fff;
+  background:radial-gradient(70% 60% at 50% 0%,rgba(77,84,255,.55),transparent 70%),#0b0c36;border:1px solid rgba(169,224,45,.4);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.7);animation:cadFade .35s var(--ease)}
+.c-exit__card h2{font-size:clamp(1.9rem,4vw,2.5rem);letter-spacing:-.03em;line-height:1.05}
+.c-exit__card p{margin:14px auto 26px;max-width:400px;color:rgba(231,233,255,.8)}
+.c-exit__card p b{color:var(--lime)}
+.c-exit__card .btn{justify-content:center}
+.c-exit__no{display:block;margin:18px auto 0;font:inherit;font-size:.85rem;color:var(--muted-2);background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.c-exit__no:hover{color:var(--muted)}

@@ -2,7 +2,7 @@
    Campanha 5.12 — Mapa de Propósito
    Lógica compartilhada: LP (/cincodoze/) e apresentação de reunião.
    Cada alternativa soma pontos para os 3 formatos:
-     T = Talk de Impacto · E = Jornada de Embaixadores · L = Hub de Impacto
+     T = Talk de Impacto · E = Jornada de Embaixadores · L = Oficina de Impacto
    ============================================================ */
 (function (global) {
   "use strict";
@@ -26,7 +26,7 @@
     },
     L: {
       id: "hub",
-      nome: "Hub de Impacto",
+      nome: "Oficina de Impacto",
       nivel: "Transformar",
       duracao: "1 dia",
       frase: "O team building que deixa legado: seu time resolve desafios reais de ONGs.",

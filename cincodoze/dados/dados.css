@@ -1,0 +1,86 @@
+/* ============================================================
+   studio.fh — /cincodoze/dados/ (destino do pop-up de saída)
+   Tom agressivo: números grandes, contraste alto. Depende de styles.css + cincodoze.css.
+   ============================================================ */
+.dd{background:var(--bg)}
+.dd-top{position:absolute;top:0;left:0;right:0;z-index:10}
+.dd-top__inner{display:flex;justify-content:space-between;align-items:center;height:76px}
+.dd-top img{height:28px;width:auto}
+
+.dd-hero{padding:150px 0 100px;background:radial-gradient(60% 70% at 85% 0%,rgba(209,52,59,.35),transparent 70%),radial-gradient(50% 60% at 0% 100%,rgba(77,84,255,.35),transparent 70%),var(--bg)}
+.dd-hero h1{margin-top:8px;font-size:clamp(2.4rem,5.6vw,4.6rem);line-height:1.02;letter-spacing:-.035em;max-width:980px}
+.dd-big{display:block;font-size:1.65em;color:#ff5a61;letter-spacing:-.05em}
+.dd-hero__sub{margin-top:24px;max-width:720px;font-size:clamp(1.1rem,1.8vw,1.35rem);color:rgba(231,233,255,.82)}
+.dd-hero__sub b{color:#fff}
+.dd cite{display:block;margin-top:14px;font-style:normal;font-size:.76rem;color:rgba(231,233,255,.5)}
+
+.dd-sec{padding:96px 0}
+.dd-sec--white{background:#fff;color:var(--ink-dark)}
+.dd-sec--white cite{color:var(--ink-soft)}
+.dd-sec--indigo{background:radial-gradient(50% 80% at 100% 0%,rgba(77,84,255,.6),transparent 70%),var(--indigo-900)}
+.dd-h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:44px}
+.dd-sec--white .dd-h2 .muted{color:#a8adcf}
+
+.dd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.dd-grid--3{grid-template-columns:repeat(3,1fr)}
+.dd-stat{border-radius:var(--r-lg);padding:30px 28px;background:#f3f4fb;border:1px solid rgba(11,12,46,.06)}
+.dd-stat b{display:block;font-size:clamp(3rem,6vw,4.4rem);line-height:1;letter-spacing:-.045em;color:#d1343b}
+.dd-stat p{margin-top:14px;font-size:1.08rem;line-height:1.5;color:var(--ink-soft)}
+.dd-stat p strong{color:var(--ink-dark)}
+.dd-stat--dark{background:var(--bg);color:#fff;border-color:transparent}
+.dd-stat--dark b{color:#ff5a61}
+.dd-stat--dark p{color:rgba(231,233,255,.78)}
+.dd-stat--dark p strong{color:#fff}
+.dd-stat--dark cite{color:rgba(231,233,255,.5)}
+.dd-stat--glass{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+.dd-stat--glass b{color:var(--lime)}
+.dd-stat--glass p{color:rgba(231,233,255,.8)}
+.dd-stat--glass p strong{color:#fff}
+
+.dd-punch{margin-top:40px;font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.c-lime-bg{background:var(--lime);color:#0b1500;padding:0 .25em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* calculadora */
+.dd-calc{background:radial-gradient(50% 70% at 0% 0%,rgba(209,52,59,.22),transparent 70%),var(--bg-2)}
+.dd-calc__inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.dd-calc .dd-h2{margin-bottom:18px}
+.dd-lead{font-size:1.1rem;color:rgba(231,233,255,.8)}
+.dd-lead b{color:#fff}
+.dd-form{display:grid;grid-template-columns:1fr;gap:12px;margin-top:28px}
+.dd-form label{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line-2)}
+.dd-form span{font-size:.95rem;color:rgba(231,233,255,.85)}
+.dd-form input{width:140px;font:inherit;font-size:1.1rem;font-weight:700;text-align:right;color:#fff;background:transparent;border:0;border-bottom:2px solid var(--line-2);padding:4px 0;outline:none}
+.dd-form input:focus{border-color:var(--lime)}
+.dd-result{border-radius:24px;padding:34px 32px;background:#fff;color:var(--ink-dark);box-shadow:0 0 0 4px rgba(209,52,59,.35),0 30px 70px -30px rgba(0,0,0,.7)}
+.dd-result small{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.dd-result > b{display:block;margin-top:10px;font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:-.04em;color:#d1343b}
+.dd-result > p{margin-top:8px;color:var(--ink-soft)}
+.dd-result ul{list-style:none;margin-top:22px;border-top:1px solid rgba(11,12,46,.1)}
+.dd-result li{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid rgba(11,12,46,.08);font-size:.98rem}
+.dd-result li strong{white-space:nowrap}
+.dd-result__nota{margin-top:16px;font-size:.82rem}
+
+/* fechamento */
+.dd-close{text-align:center;background:radial-gradient(60% 80% at 50% 0%,rgba(77,84,255,.4),transparent 70%),var(--bg)}
+.dd-close__inner{display:flex;flex-direction:column;align-items:center}
+.dd-close h2{font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;line-height:1.05;max-width:800px}
+.dd-close p{margin-top:16px;max-width:600px;font-size:1.15rem;color:rgba(231,233,255,.8)}
+.dd-close__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.dd-no{margin-top:22px;font-size:.85rem;color:var(--muted-2);text-decoration:underline;text-underline-offset:3px}
+.dd-no:hover{color:var(--muted)}
+.dd-foot{padding:34px 0;background:var(--bg-2);border-top:1px solid var(--line)}
+.dd-foot p{font-size:.8rem;color:var(--muted-2);max-width:820px}
+.dd-foot p + p{margin-top:8px}
+
+@media (max-width:900px){
+  .dd-grid,.dd-grid--3,.dd-calc__inner{grid-template-columns:1fr}
+  .dd-calc__inner{gap:34px}
+}
+@media (max-width:600px){
+  .dd-hero{padding:120px 0 70px}
+  .dd-sec{padding:70px 0}
+  .dd-form label{flex-direction:column;align-items:flex-start;gap:6px}
+  .dd-form input{width:100%;text-align:left}
+  .dd-top .btn{padding:.6em 1em;font-size:.85rem}
+  .dd-close__cta .btn{width:100%;justify-content:center;white-space:normal}
+}

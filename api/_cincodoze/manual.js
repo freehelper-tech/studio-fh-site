@@ -8,7 +8,7 @@
 const PRECOS = {
   talk: { nome: "Talk de Impacto", valor: 10000, texto: "R$ 10 mil" },
   embaixadores: { nome: "Jornada de Embaixadores", valor: 30000, texto: "R$ 30 mil" },
-  hub: { nome: "Hub de Impacto", valor: 50000, texto: "R$ 50 mil" },
+  hub: { nome: "Oficina de Impacto", valor: 50000, texto: "R$ 50 mil" },
 };
 
 const SECOES = [
@@ -50,7 +50,7 @@ const SECOES = [
 </table>
 <h3>Regra de ouro dos prazos</h3>
 <ul>
-<li><b>Hub de Impacto:</b> mínimo de <b>3 semanas</b> entre assinatura e o dia (curadoria das ONGs e desafios).</li>
+<li><b>Oficina de Impacto:</b> mínimo de <b>3 semanas</b> entre assinatura e o dia (curadoria das ONGs e desafios).</li>
 <li><b>Jornada de Embaixadores:</b> mínimo de <b>2 semanas</b> (pesquisa de causas com o time roda 1 semana).</li>
 <li><b>Talk de Impacto:</b> mínimo de <b>1 semana</b>.</li>
 </ul>
@@ -71,7 +71,7 @@ const SECOES = [
   </div>
   <h4>Etapas</h4>
   <ol class="m-steps"><li><b>Briefing</b> (30 min): cultura, causas que a empresa já apoia, público.</li><li><b>Personalização</b>: dados do setor, exemplos e cases próximos da realidade do cliente.</li><li><b>Talk</b> com dinâmica ao vivo: enquete por QR code ("qual causa te move?").</li><li><b>Pesquisa pós-talk</b>: quem quer se engajar e em quais causas.</li><li><b>Resumo executivo</b>: mapa de interesse do time + recomendação de próximos passos.</li></ol>
-  <p class="m-tip"><b>Gancho de upsell:</b> a pesquisa pós-talk entrega a lista de futuros embaixadores. É o argumento pronto para a Jornada ou o Hub em 2027.</p>
+  <p class="m-tip"><b>Gancho de upsell:</b> a pesquisa pós-talk entrega a lista de futuros embaixadores. É o argumento pronto para a Jornada ou a Oficina em 2027.</p>
   <p><b>Não inclui:</b> deslocamento fora da Grande SP, gravação profissional, tradução.</p>
 </div>
 
@@ -86,18 +86,18 @@ const SECOES = [
   <ol class="m-steps"><li><b>Pesquisa rápida de causas</b> com todo o time (5 min, 1 semana no ar).</li><li><b>Convocação e seleção</b> dos embaixadores (convite aberto + indicação dos líderes).</li><li><b>Workshop de co-criação</b>: "minha causa" → mapa coletivo de causas → priorização → compromissos.</li><li><b>Carta de Propósito + plano de causas 2027</b>: 1 página com 2–3 causas prioritárias e as primeiras ações.</li><li><b>Kit do embaixador + relatório final</b>.</li></ol>
   <h4>Roteiro do workshop (4h)</h4>
   <table class="m-table"><tr><td>0:00</td><td>Abertura: por que propósito importa para o negócio</td></tr><tr><td>0:20</td><td>"Minha causa": dinâmica individual e em duplas</td></tr><tr><td>0:50</td><td>Mapa de causas coletivo (resultado da pesquisa + o que surgiu na sala)</td></tr><tr><td>1:30</td><td>Priorização com votação: impacto × conexão com o negócio × energia do time</td></tr><tr><td>2:00</td><td>Intervalo</td></tr><tr><td>2:15</td><td>Squads por causa desenham as primeiras ações de 2027</td></tr><tr><td>3:15</td><td>Compromissos públicos + leitura da Carta de Propósito</td></tr><tr><td>3:40</td><td>Fechamento e foto oficial dos embaixadores</td></tr></table>
-  <p class="m-tip"><b>Gancho de upsell:</b> o plano de 2027 já nasce com ações. A primeira delas pode ser um Hub de Impacto ou um programa contínuo de voluntariado studio.fh.</p>
+  <p class="m-tip"><b>Gancho de upsell:</b> o plano de 2027 já nasce com ações. A primeira delas pode ser uma Oficina de Impacto ou um programa contínuo de voluntariado studio.fh.</p>
 </div>
 
 <div class="m-prod m-prod--hl">
-  <div class="m-prod__head"><span>03 · Transformar</span><h3>Hub de Impacto</h3><b>R$ 50 mil</b></div>
+  <div class="m-prod__head"><span>03 · Transformar</span><h3>Oficina de Impacto</h3><b>R$ 50 mil</b></div>
   <p><b>Em uma frase:</b> o team building que deixa legado. Em vez de massa de pizza, o time usa o que sabe fazer de melhor para resolver desafios reais de ONGs, num formato de lab de 1 dia.</p>
   <div class="m-grid m-grid--2">
     <div><h4>Para quem</h4><ul><li>Empresas que querem desenvolver soft skills e liderança</li><li>Times com silos, turnover ou clima em queda</li><li>Quem já tem programa e quer subir o nível</li><li>Quem precisa de relatório de impacto/ESG robusto</li></ul></div>
     <div><h4>Formato</h4><ul><li>1 dia (~6h), presencial</li><li>Até 60 colaboradores em squads de 5 a 6</li><li>3 a 5 ONGs com desafios reais</li><li>Facilitadores + mentores studio.fh</li></ul></div>
   </div>
   <h4>Etapas</h4>
-  <ol class="m-steps"><li><b>Curadoria das ONGs</b> alinhadas às causas e ao território da empresa.</li><li><b>Seleção dos desafios</b> (marketing, finanças, processos, tecnologia, captação…) validados com as ONGs.</li><li><b>Design conjunto</b> da sessão com o RH: squads, mix de áreas, agenda, local.</li><li><b>O dia do Hub</b>: imersão, mão na massa com mentoria, pitch das soluções para as ONGs.</li><li><b>Relatório final</b>: participantes, horas, soluções entregues, ODS, depoimentos, fotos.</li></ol>
+  <ol class="m-steps"><li><b>Curadoria das ONGs</b> alinhadas às causas e ao território da empresa.</li><li><b>Seleção dos desafios</b> (marketing, finanças, processos, tecnologia, captação…) validados com as ONGs.</li><li><b>Design conjunto</b> da sessão com o RH: squads, mix de áreas, agenda, local.</li><li><b>O dia da Oficina</b>: imersão, mão na massa com mentoria, pitch das soluções para as ONGs.</li><li><b>Relatório final</b>: participantes, horas, soluções entregues, ODS, depoimentos, fotos.</li></ol>
   <h4>Agenda do dia (6h)</h4>
   <table class="m-table"><tr><td>9:00</td><td>Abertura: a causa, as ONGs e as regras do jogo</td></tr><tr><td>9:30</td><td>ONGs apresentam seus desafios ao vivo</td></tr><tr><td>10:00</td><td>Squads mistos: entendimento do problema com a ONG</td></tr><tr><td>11:00</td><td>Mão na massa com mentoria (almoço no meio)</td></tr><tr><td>14:00</td><td>Refino e preparação do pitch</td></tr><tr><td>15:00</td><td>Pitch das soluções para as ONGs</td></tr><tr><td>15:45</td><td>Celebração, entrega simbólica e compromisso</td></tr></table>
   <p><b>Não inclui:</b> espaço e alimentação (podemos indicar), deslocamento fora da Grande SP, implementação das soluções após o dia. <span class="m-todo">confirmar o que entra no preço: espaço? coffee? brindes?</span></p>
@@ -105,7 +105,7 @@ const SECOES = [
 
 <h3>Combos</h3>
 <table class="m-table"><tr><th>Combo</th><th>Quando oferecer</th><th>Preço</th></tr>
-<tr><td>Talk (todo o time) + Hub (grupo de 60)</td><td>Empresa grande que quer engajar todo mundo e aprofundar com um grupo</td><td>R$ 55 mil <span class="m-todo">validar</span></td></tr>
+<tr><td>Talk (todo o time) + Oficina (grupo de 60)</td><td>Empresa grande que quer engajar todo mundo e aprofundar com um grupo</td><td>R$ 55 mil <span class="m-todo">validar</span></td></tr>
 <tr><td>Talk + Jornada de Embaixadores</td><td>Abre para todos e já forma os embaixadores com quem levantou a mão</td><td>R$ 36 mil <span class="m-todo">validar</span></td></tr></table>`,
   },
   {
@@ -113,7 +113,7 @@ const SECOES = [
     titulo: "Quem compra e com quem falar",
     html: `
 <div class="m-grid m-grid--2">
-<div class="m-card"><h4>Empresa ideal</h4><ul><li>100+ colaboradores (para o Hub, 300+)</li><li>Tem RH/People estruturado e alguma pauta ESG</li><li>Já faz ação de fim de ano (confraternização, campanha solidária)</li><li>Sede ou operação relevante na Grande SP</li><li>Sinais quentes: pesquisa de clima recente, vagas em aberto, relatório de sustentabilidade, post sobre voluntariado</li></ul></div>
+<div class="m-card"><h4>Empresa ideal</h4><ul><li>100+ colaboradores (para a Oficina, 300+)</li><li>Tem RH/People estruturado e alguma pauta ESG</li><li>Já faz ação de fim de ano (confraternização, campanha solidária)</li><li>Sede ou operação relevante na Grande SP</li><li>Sinais quentes: pesquisa de clima recente, vagas em aberto, relatório de sustentabilidade, post sobre voluntariado</li></ul></div>
 <div class="m-card"><h4>Quem decide e quem influencia</h4><ul><li><b>Decisor:</b> Diretor(a) de RH/People, Head de Cultura, Diretor(a) de Sustentabilidade/ESG</li><li><b>Influenciador:</b> Comunicação Interna, Endomarketing, Instituto/Fundação da empresa</li><li><b>Libera o dinheiro:</b> Financeiro/Compras. Pergunte cedo como funciona cadastro de fornecedor.</li></ul></div>
 </div>
 <h3>Pitch em 30 segundos</h3>
@@ -148,11 +148,11 @@ const SECOES = [
     id: "objecoes",
     titulo: "Objeções e como responder",
     html: `
-<div class="m-obj"><b>"Está caro."</b><p>Compare com o que já gastam: uma confraternização para 60 pessoas custa facilmente R$ 20–40 mil e não deixa nada. Aqui o time se desenvolve, as ONGs recebem soluções reais e a empresa ganha relatório de impacto. Se o orçamento for o limite, desça um degrau da escada (Hub → Jornada → Talk) em vez de dar desconto.</p></div>
+<div class="m-obj"><b>"Está caro."</b><p>Compare com o que já gastam: uma confraternização para 60 pessoas custa facilmente R$ 20–40 mil e não deixa nada. Aqui o time se desenvolve, as ONGs recebem soluções reais e a empresa ganha relatório de impacto. Se o orçamento for o limite, desça um degrau da escada (Oficina → Jornada → Talk) em vez de dar desconto.</p></div>
 <div class="m-obj"><b>"Não tenho orçamento."</b><p>"É orçamento de 2026 ou de 2027?" Muitas áreas têm verba que vence em dezembro. Se não houver mesmo, o Talk (R$ 10 mil) costuma caber em verba de endomarketing ou evento.</p></div>
 <div class="m-obj"><b>"Dezembro é muito corrido."</b><p>Por isso é 1 dia e a gente opera tudo. Do lado de vocês, só precisamos de um ponto focal e do espaço. E a data não precisa ser 05/12: executamos de 01 a 18/12.</p></div>
 <div class="m-obj"><b>"Vou deixar para o ano que vem."</b><p>O 05/12 de 2026 é o Dia Internacional do Voluntariado no Ano Internacional do Voluntariado: não se repete. E começar 2027 com embaixadores e causas definidas adianta o ano inteiro.</p></div>
-<div class="m-obj"><b>"Meu time não vai querer participar."</b><p>Por isso o formato é prático e com desafio real, não palestra motivacional. No Hub, o time usa as próprias habilidades e vê o resultado no mesmo dia. Mostre o case Mapfre ou Red Bull Bragantino.</p></div>
+<div class="m-obj"><b>"Meu time não vai querer participar."</b><p>Por isso o formato é prático e com desafio real, não palestra motivacional. Na Oficina, o time usa as próprias habilidades e vê o resultado no mesmo dia. Mostre o case Mapfre ou Red Bull Bragantino.</p></div>
 <div class="m-obj"><b>"Já fazemos campanha de doação."</b><p>Ótimo, já existe a vontade. A Jornada de Embaixadores transforma ações pontuais em um movimento com causas, donos e plano.</p></div>
 <div class="m-obj"><b>"Preciso falar com meu chefe."</b><p>"Faz sentido. Quer que eu prepare um resumo de 1 página para ele, ou prefere marcar 20 min com nós dois?" Ofereça o link da apresentação (sem preço) e marque a data.</p></div>`,
   },
@@ -162,7 +162,7 @@ const SECOES = [
     html: `
 <h3>Regras</h3>
 <ul>
-<li><b>Ancore no Hub.</b> Apresente sempre os 3 formatos; o Hub como referência faz a Jornada parecer acessível.</li>
+<li><b>Ancore na Oficina.</b> Apresente sempre os 3 formatos; a Oficina como referência faz a Jornada parecer acessível.</li>
 <li><b>Troque, não dê.</b> Desconto só em troca de algo: fechar até 05/11, pagamento à vista, autorização para virar case, combo.</li>
 <li><b>Desconto máximo:</b> <span class="m-todo">definir (sugestão: 10%, só com aprovação do Pedro)</span></li>
 <li><b>Bônus até 05/11:</b> kit de comunicação interna (convite, lembretes e pós-evento) + prioridade na escolha da data.</li>
@@ -176,14 +176,14 @@ const SECOES = [
     titulo: "Do fechamento à execução",
     html: `
 <table class="m-table">
-<tr><th>Quando</th><th>Hub de Impacto</th><th>Jornada de Embaixadores</th><th>Talk de Impacto</th></tr>
+<tr><th>Quando</th><th>Oficina de Impacto</th><th>Jornada de Embaixadores</th><th>Talk de Impacto</th></tr>
 <tr><td>D-21</td><td>Kick-off com RH: causas, público, local</td><td>—</td><td>—</td></tr>
 <tr><td>D-18</td><td>Shortlist de ONGs (2 por causa) para aprovação</td><td>—</td><td>—</td></tr>
 <tr><td>D-14</td><td>Desafios validados com as ONGs</td><td>Kick-off + pesquisa de causas no ar</td><td>—</td></tr>
 <tr><td>D-10</td><td>Design da sessão aprovado (squads, agenda)</td><td>Convocação dos embaixadores</td><td>—</td></tr>
 <tr><td>D-7</td><td>Comunicação interna e inscrições</td><td>Resultado da pesquisa + lista de embaixadores</td><td>Briefing (30 min)</td></tr>
 <tr><td>D-3</td><td>Briefing de facilitadores, mentores e ONGs; materiais</td><td>Materiais do workshop</td><td>Talk personalizado e enquete prontos</td></tr>
-<tr><td>D0</td><td>O dia do Hub</td><td>Workshop</td><td>Talk</td></tr>
+<tr><td>D0</td><td>O dia da Oficina</td><td>Workshop</td><td>Talk</td></tr>
 <tr><td>D+15</td><td>Relatório de impacto</td><td>Carta de Propósito + plano 2027 + relatório</td><td>Resumo executivo + mapa de interesse</td></tr>
 <tr><td>D+30</td><td colspan="3">Conversa de resultados e proposta de continuidade para 2027</td></tr>
 </table>`,
