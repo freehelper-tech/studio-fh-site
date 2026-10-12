@@ -140,6 +140,7 @@
     carregado.clarity = true;
     get("clarity").then(function (c) {
       if (!c.ok) throw new Error(c.error);
+      if (c.vazio) { $("#clKpis").innerHTML = '<p class="pn-empty">' + esc(c.aviso) + "</p>"; return; }
       var n = function (v) { return v == null ? "—" : Math.round(v).toLocaleString("pt-BR"); };
       var seg = function (v) { if (v == null) return "—"; v = Math.round(v); return (v >= 60 ? Math.floor(v / 60) + "m" : "") + String(v % 60).padStart(v >= 60 ? 2 : 1, "0") + "s"; };
       var porSessao = function (v) { return c.sessoes ? seg(v / c.sessoes) : "—"; };

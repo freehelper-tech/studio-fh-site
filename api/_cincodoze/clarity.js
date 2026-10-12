@@ -82,7 +82,8 @@ async function resumo() {
       aviso = "Não consegui atualizar agora (" + err.message + "). Mostrando o último retrato salvo.";
     }
   }
-  if (!dados) throw new Error(aviso || "Sem dados do Clarity ainda.");
+  // sem retrato salvo: devolve o aviso em vez de erro, pro painel explicar o que houve
+  if (!dados) return { atualizado: null, aviso: aviso || "Sem dados do Clarity ainda.", vazio: true };
   return { atualizado: new Date(quando).toISOString(), aviso, ...dados.resumo };
 }
 
