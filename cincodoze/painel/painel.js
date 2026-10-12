@@ -124,7 +124,8 @@
       kpi("Cliques nos botões dela", dc, pct(dc, dv) + " de quem visitou");
     var ignorou = Math.max(0, vis - cli - rec);
     bars($("#exitBars"), vis ? { "Quero ver os dados": cli, "Não quero fortalecer meu time": rec, "Fechou no ×, fora ou saiu": ignorou } : {});
-    var NOMES_CTA = { "dados-topo": "Fale com a gente (topo)", "dados-final": "Quero fortalecer meu time", "dados-mapa": "Descobrir o formato ideal" };
+    var NOMES_CTA = { "dados-topo": "Fale com a gente (topo)", "dados-final": "Quero levar para minha empresa", "dados-mapa": "Descobrir o formato ideal",
+      "share-whatsapp": "Diretoria: WhatsApp", "share-email": "Diretoria: e-mail", "share-link": "Diretoria: copiou link", "share-pdf": "Diretoria: PDF", "share-nativo": "Diretoria: compartilhar (celular)" };
     var ctas = {};
     evs.filter(function (e) { return e.evento === "cincodoze_dados_cta"; }).forEach(function (e) { var k = NOMES_CTA[e.detalhe] || e.detalhe || "outro"; ctas[k] = (ctas[k] || 0) + e.n; });
     bars($("#dadosBars"), ctas);

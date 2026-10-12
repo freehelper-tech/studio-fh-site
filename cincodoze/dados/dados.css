@@ -12,11 +12,11 @@
 .dd-big{display:block;font-size:1.65em;color:#ff5a61;letter-spacing:-.05em}
 .dd-hero__sub{margin-top:24px;max-width:720px;font-size:clamp(1.1rem,1.8vw,1.35rem);color:rgba(231,233,255,.82)}
 .dd-hero__sub b{color:#fff}
-.dd cite{display:block;margin-top:14px;font-style:normal;font-size:.76rem;color:rgba(231,233,255,.5)}
+.dd cite{display:block;margin-top:14px;font-style:normal;font-size:.8rem;color:rgba(231,233,255,.78)}
 
 .dd-sec{padding:96px 0}
 .dd-sec--white{background:#fff;color:var(--ink-dark)}
-.dd-sec--white cite{color:var(--ink-soft)}
+.dd-sec--white cite{color:#3c3f63}
 .dd-sec--indigo{background:radial-gradient(50% 80% at 100% 0%,rgba(77,84,255,.6),transparent 70%),var(--indigo-900)}
 .dd-h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:44px}
 .dd-sec--white .dd-h2 .muted{color:#a8adcf}
@@ -31,7 +31,7 @@
 .dd-stat--dark b{color:#ff5a61}
 .dd-stat--dark p{color:rgba(231,233,255,.78)}
 .dd-stat--dark p strong{color:#fff}
-.dd-stat--dark cite{color:rgba(231,233,255,.5)}
+.dd-stat--dark cite{color:rgba(231,233,255,.78)}
 .dd-stat--glass{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
 .dd-stat--glass b{color:var(--lime)}
 .dd-stat--glass p{color:rgba(231,233,255,.8)}
@@ -44,7 +44,7 @@
 .dd-close{text-align:center;background:radial-gradient(60% 80% at 50% 0%,rgba(77,84,255,.4),transparent 70%),var(--bg)}
 .dd-close__inner{display:flex;flex-direction:column;align-items:center}
 .dd-close h2{font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.03em;line-height:1.05;max-width:800px}
-.dd-close p{margin-top:16px;max-width:600px;font-size:1.15rem;color:rgba(231,233,255,.8)}
+.dd-close > .container > p{margin-top:16px;max-width:600px;font-size:1.15rem;color:rgba(231,233,255,.8)}
 .dd-close__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
 .dd-no{margin-top:22px;font-size:.85rem;color:var(--muted-2);text-decoration:underline;text-underline-offset:3px}
 .dd-no:hover{color:var(--muted)}
@@ -60,4 +60,39 @@
   .dd-sec{padding:70px 0}
   .dd-top .btn{padding:.6em 1em;font-size:.85rem}
   .dd-close__cta .btn{width:100%;justify-content:center;white-space:normal}
+}
+
+/* v2 (12/10): 3 cards por linha, Deloitte em verde, fontes mais legíveis, compartilhar */
+.dd-stat--glass cite{color:rgba(231,233,255,.78)}
+.dd-grid--green .dd-stat b{color:#3f8f0a}
+.dd-close__cta{align-items:center}
+.dd-share-btn{border-color:rgba(169,224,45,.6)}
+.dd-share{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.dd-share[hidden]{display:none}
+.dd-share a,.dd-share button{font:inherit;font-size:.92rem;font-weight:600;color:#fff;cursor:pointer;padding:.6em 1.1em;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line-2)}
+.dd-share a:hover,.dd-share button:hover{background:rgba(169,224,45,.18);border-color:var(--lime)}
+.dd-close .dd-close__inner .dd-close__note{margin-top:22px;max-width:none;font-size:.85rem;color:rgba(231,233,255,.7)}
+.dd-close__note:empty{display:none}
+
+/* PDF (Salvar em PDF / imprimir): papel branco, sem menus e botões */
+@media print{
+  @page{margin:14mm}
+  .dd,.dd-hero,.dd-sec,.dd-calc,.dd-close,.dd-sec--indigo{background:#fff!important;color:#0b0c2e!important}
+  .dd-top,.dd-close__cta,.dd-share,.dd-close__note{display:none!important}
+  .dd-hero{padding:0 0 18px}
+  .dd-hero h1,.dd-close h2,.dd-h2,.dd-punch{color:#0b0c2e!important}
+  .dd-hero__sub,.dd-hero__sub b{color:#2b2e52!important}
+  .dd cite{color:#3c3f63!important}
+  .dd-sec{padding:18px 0}
+  .dd-stat,.dd-stat--dark,.dd-stat--glass{background:#f3f4fb!important;border:1px solid #dfe2f5!important;break-inside:avoid}
+  .dd-stat p,.dd-stat--glass p,.dd-stat--dark p{color:#2b2e52!important}
+  .dd-stat p strong{color:#0b0c2e!important}
+  .dd-stat--glass b{color:#3f8f0a!important}
+  .dd-grid,.dd-grid--3{grid-template-columns:1fr 1fr!important;gap:10px}
+  .c-lime{color:#3f8f0a!important}
+  .dd-close{text-align:left}
+  .dd-close p{color:#2b2e52!important}
+  .dd-foot{background:#fff!important;border:0}
+  .dd-foot p{color:#3c3f63!important}
+  .dd-foot::after{content:"studio.freehelper.com.br/cincodoze · contato@freehelper.com.br";display:block;margin-top:6px;font-size:.8rem;color:#0b0c2e}
 }
