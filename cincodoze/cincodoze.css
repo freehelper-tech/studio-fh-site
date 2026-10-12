@@ -340,3 +340,5 @@ body.c-modal-open{overflow:hidden}
 .c-exit__no:hover{color:var(--muted)}
 .c-logos--press img.c-press__tall{height:64px}
 @media (max-width:760px){.c-logos--press img.c-press__tall{height:50px}}
+.c-logos--press img.c-press__wide{height:30px}
+@media (max-width:760px){.c-logos--press img.c-press__wide{height:22px}}
