@@ -20,8 +20,14 @@
   var btnShare = document.getElementById("compartilhar");
   var menu = document.getElementById("shareMenu");
   menu.querySelector('[data-share="whatsapp"]').href = "https://wa.me/?text=" + encodeURIComponent(TEXTO);
-  menu.querySelector('[data-share="email"]').href = "mailto:?subject=" + encodeURIComponent("Os números para a nossa diretoria: engajamento e saúde mental") +
-    "&body=" + encodeURIComponent("Oi,\n\nCompartilho estes dados sobre engajamento, saúde mental e retenção. Acho que vale olharmos para 2027.\n\n" + URL_COMPARTILHAR);
+  menu.querySelector('[data-share="email"]').href = "mailto:?subject=" + encodeURIComponent("546 mil afastamentos por saúde mental em 2025. E o nosso time?") +
+    "&body=" + encodeURIComponent(
+      "Oi,\n\n" +
+      "Em 2025, o Brasil bateu recorde de afastamentos do trabalho por saúde mental: 546 mil, 15,7% a mais que em 2024. " +
+      "E só 32% dos profissionais brasileiros estão engajados no trabalho.\n\n" +
+      "Separei os números nesta página (2 min de leitura), com fontes como Ministério da Previdência, Gallup e Deloitte:\n" +
+      URL_COMPARTILHAR + "\n\n" +
+      "Acho que vale olharmos para isso antes de fechar o planejamento de 2027.");
   btnShare.addEventListener("click", function () {
     // no celular, usa o compartilhar nativo (WhatsApp, e-mail, etc. em um toque)
     if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {
