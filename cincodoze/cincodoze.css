@@ -293,3 +293,17 @@ cite{display:block;margin-top:14px;font-style:normal;font-size:.74rem;letter-spa
 }
 .q-result__badge{background:none;padding:0;border-radius:0;color:var(--lime)}
 @media (max-width:760px){.c-hero .hero__visual{display:none}}
+
+/* ---------- v4: caminho direto (modal) + caminho de dúvida (Mapa) ---------- */
+.c-modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(3,3,30,.72);backdrop-filter:blur(6px);overflow-y:auto}
+.c-modal[hidden]{display:none}
+.c-modal__card{position:relative;width:min(640px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:#0b0c36}
+.c-modal__x{position:absolute;top:14px;right:16px;z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:#fff;font-size:1.3rem;line-height:1;cursor:pointer}
+.c-modal__x:hover{background:var(--card-2)}
+.c-modal .cad__top{padding-right:44px}
+body.c-modal-open{overflow:hidden}
+.c-doubt{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:30px;font-size:1.02rem;color:var(--ink-soft)}
+.c-doubt b{color:var(--blue)}
+.c-doubt:hover b{color:var(--indigo-900);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){.c-modal{padding:10px;align-items:start}.c-modal__card{padding:22px 18px}}
+.c-modal .cad__bar,.c-modal .cad__count{display:none}

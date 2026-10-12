@@ -109,7 +109,7 @@
       '<h3 class="cad__title">Qual o formato ideal para o seu time?</h3>' +
       "<p>5 perguntas, resultado na hora.</p>" +
       '<button class="btn btn--lime btn--lg" data-act="start">Começar agora <span class="arr">→</span></button><br />' +
-      '<button class="q-intro__skip" data-act="skip">Já sei o que quero, quero falar com o time</button>' +
+      '<button class="q-intro__skip" data-contato="">Já sei o que quero, quero falar com o time</button>' +
       "</div>";
   }
 
@@ -129,11 +129,11 @@
       "</div>";
   }
 
-  function formHtml(titulo, sub) {
+  function formHtml(titulo, sub, escolha, botao) {
     var opts = ['<option value="">Selecione</option>']
       .concat(["talk", "embaixadores", "hub", "combo"].map(function (k) {
         var nome = k === "combo" ? "Quero ajuda pra escolher / combinar" : NOMES[k];
-        return '<option value="' + k + '"' + (state.escolha === k ? " selected" : "") + ">" + nome + "</option>";
+        return '<option value="' + k + '"' + (escolha === k ? " selected" : "") + ">" + nome + "</option>";
       }));
     return '<form class="q-form" novalidate>' +
       '<div class="q-result__cta"><h4>' + titulo + "</h4><p>" + sub + "</p></div>" +
@@ -153,7 +153,7 @@
       '<label class="q-lgpd"><input type="checkbox" name="lgpd" /> <span>Autorizo o studio.fh / Freehelper a usar estes dados para entrar em contato sobre a Campanha 5.12, conforme a LGPD.</span></label>' +
       '<div class="cad__error" role="alert"></div>' +
       '<div class="cad__nav"><button type="button" class="btn btn--ghost" data-act="back">← Voltar</button>' +
-      '<button type="submit" class="btn btn--lime">Receber meu Mapa <span class="arr">→</span></button></div>' +
+      '<button type="submit" class="btn btn--lime">' + botao + ' <span class="arr">→</span></button></div>' +
       "</form>";
   }
   function fld(name, label, type, ac) {
@@ -176,21 +176,13 @@
       '<h3 class="q-result__name">Formato indicado: ' + esc(r.formato.nome) + "</h3>" +
       '<p class="q-result__why">' + esc(r.formato.porque) + "</p>" +
       '<div class="q-result__bars">' + bars + "</div>" +
-      formHtml("Receba o Mapa de Propósito completo", "Nossa equipe envia o mapa detalhado e uma proposta para dezembro em até 48h úteis.") +
+      formHtml("Receba o Mapa de Propósito completo", "Nossa equipe envia o mapa detalhado e uma proposta para dezembro em até 48h úteis.", state.escolha, "Receber meu Mapa") +
       "</div>";
-    bindForm();
+    bindForm(box, true);
   }
 
-  function renderSkip() {
-    box.innerHTML = head("Fale com o time 5.12", null) +
-      '<div class="cad__step is-active">' +
-      formHtml("Vamos montar o seu 5.12", "Deixe seus dados e retornamos em até 48h úteis com datas e proposta.") +
-      "</div>";
-    bindForm();
-  }
-
-  function renderDone(nome) {
-    box.innerHTML = head("Tudo certo", 1) +
+  function doneHtml(nome) {
+    return head("Tudo certo", 1) +
       '<div class="cad__step is-active q-done">' +
       '<div class="q-done__icon">✓</div>' +
       "<h3>Recebemos, " + esc(nome.split(" ")[0]) + "!</h3>" +
@@ -201,7 +193,6 @@
   function go(passo) {
     state.passo = passo;
     if (passo === -1) renderIntro();
-    else if (passo === "skip") renderSkip();
     else if (passo < M.PERGUNTAS.length) renderPergunta(passo);
     else {
       state.resultado = M.calcular(state.respostas);
@@ -226,27 +217,49 @@
     if (a === "start") {
       if (!state.iniciou) { state.iniciou = true; push({ event: "cincodoze_mapa_inicio" }); }
       go(0);
-    } else if (a === "skip") {
-      push({ event: "cincodoze_contato_direto" });
-      go("skip");
     } else if (a === "back") {
-      if (state.passo === "skip") go(-1);
-      else go(Math.max(0, (typeof state.passo === "number" ? state.passo : M.PERGUNTAS.length) - 1));
+      go(Math.max(0, state.passo - 1));
     }
   });
 
-  // Botões "Quero o Talk/Jornada/Hub" pré-selecionam o formato no form
-  document.querySelectorAll("[data-escolha]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      state.escolha = b.dataset.escolha;
-      var sel = box.querySelector("#q-formato");
-      if (sel) sel.value = state.escolha;
-      push({ event: "cincodoze_escolha_formato", formato: state.escolha });
-    });
+  /* ============================================================
+     CAMINHO DIRETO: botões [data-contato="<formato>"] abrem o formulário
+     curto num modal, sem passar pelo Mapa.
+     ============================================================ */
+  var modal = document.getElementById("contato");
+  var modalBox = document.getElementById("contatoBox");
+  var ultimoFoco = null;
+  function abrirContato(formato, cta) {
+    ultimoFoco = document.activeElement;
+    modalBox.innerHTML = head("Fale com o time studio.fh", null) +
+      '<div class="cad__step is-active">' +
+      formHtml(formato ? "Interesse: " + NOMES[formato] : "Vamos montar o seu dia de impacto",
+        "Deixe seus dados e retornamos em até 48h úteis com datas e proposta.", formato, "Quero ser contatado") +
+      "</div>";
+    bindForm(modalBox, false);
+    var voltar = modalBox.querySelector('[data-act="back"]');
+    voltar.removeAttribute("data-act");
+    voltar.setAttribute("data-fechar", "");
+    voltar.textContent = "Cancelar";
+    modal.hidden = false;
+    document.body.classList.add("c-modal-open");
+    setTimeout(function () { var f = modalBox.querySelector("input"); if (f) f.focus(); }, 50);
+    push({ event: "cincodoze_contato_direto", formato: formato || "", cta: cta || "" });
+  }
+  function fecharContato() {
+    modal.hidden = true;
+    document.body.classList.remove("c-modal-open");
+    if (ultimoFoco) ultimoFoco.focus();
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-contato]");
+    if (b) { e.preventDefault(); abrirContato(b.dataset.contato, b.dataset.cta || b.dataset.contato); return; }
+    if (e.target === modal || e.target.closest("[data-fechar]")) fecharContato();
   });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) fecharContato(); });
 
-  function bindForm() {
-    var form = box.querySelector(".q-form");
+  function bindForm(root, viaMapa) {
+    var form = root.querySelector(".q-form");
     var tel = form.querySelector('[name="telefone"]');
     tel.addEventListener("input", function () { tel.value = maskPhone(tel.value); });
     form.addEventListener("submit", function (e) {
@@ -280,10 +293,10 @@
       if (!data.lgpd) ok = false;
       if (!ok) return;
 
-      data.respostas = state.respostas;
-      data.recomendacao = state.resultado ? state.resultado.formato.id : "";
-      data.pontos = state.resultado ? state.resultado.pontos : null;
-      data.origem = state.resultado ? "mapa" : "contato-direto";
+      var r = viaMapa ? state.resultado : null;
+      data.respostas = r ? state.respostas : {};
+      data.recomendacao = r ? r.formato.id : "";
+      data.origem = r ? "mapa" : "contato-direto";
       data.pagina = location.pathname;
       data.utm = UTM;
 
@@ -298,11 +311,11 @@
         .then(function (res) {
           if (!res.ok) throw new Error(res.error || "Falha no envio");
           push({ event: "cincodoze_lead", formato: data.formato, mapa_formato: data.recomendacao, form_origem: data.origem });
-          renderDone(data.nome);
+          root.innerHTML = doneHtml(data.nome);
         })
         .catch(function (ex) {
           btn.disabled = false;
-          btn.innerHTML = 'Receber meu Mapa <span class="arr">→</span>';
+          btn.innerHTML = (viaMapa ? "Receber meu Mapa" : "Quero ser contatado") + ' <span class="arr">→</span>';
           err.innerHTML = esc(ex.message && ex.message !== "Failed to fetch" ? ex.message : "Não conseguimos enviar agora.") +
             ' Se preferir, escreva para <a href="mailto:contato@freehelper.com.br">contato@freehelper.com.br</a>.';
           err.classList.add("is-on");
