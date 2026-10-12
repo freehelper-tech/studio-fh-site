@@ -338,3 +338,5 @@ body.c-modal-open{overflow:hidden}
 .c-exit__card .btn{justify-content:center}
 .c-exit__no{display:block;margin:18px auto 0;font:inherit;font-size:.85rem;color:var(--muted-2);background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .c-exit__no:hover{color:var(--muted)}
+.c-logos--press img.c-press__tall{height:64px}
+@media (max-width:760px){.c-logos--press img.c-press__tall{height:50px}}
