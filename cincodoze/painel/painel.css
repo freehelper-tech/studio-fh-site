@@ -144,3 +144,10 @@
 .pn-link{font-size:.9rem;font-weight:600;color:var(--blue)}
 .pn-link:hover{text-decoration:underline}
 .pn-card h3 small{font-weight:500;margin-left:6px}
+
+/* pop-up de saída e /dados/ */
+.pn-card--sec{margin-top:12px}
+.pn-kpis--in{margin:14px 0 6px}
+.pn-kpis--in .pn-kpi{background:#f6f7fd;border-color:transparent}
+.pn-grid--in{margin-top:10px;gap:28px}
+.pn-h4{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px}

@@ -50,14 +50,18 @@ async function dados() {
     SELECT ISNULL(utm_source,'(direto)') k, COUNT(*) n FROM dbo.leads GROUP BY utm_source ORDER BY n DESC;
     SELECT TOP 300 id, FORMAT(criado_em AT TIME ZONE 'UTC' AT TIME ZONE 'E. South America Standard Time','dd/MM HH:mm') quando,
       nome, cargo, empresa, colaboradores, formato, recomendacao, utm_source, monday_id
-    FROM dbo.leads ORDER BY id DESC;`);
-  const [t, dias, formato, recomendacao, colab, origem, lista] = r.recordsets;
+    FROM dbo.leads ORDER BY id DESC;
+    SELECT evento, ISNULL(detalhe,'') detalhe, COUNT(*) n,
+      SUM(CASE WHEN criado_em >= DATEADD(day,-7,SYSUTCDATETIME()) THEN 1 ELSE 0 END) semana
+    FROM dbo.eventos GROUP BY evento, detalhe;`);
+  const [t, dias, formato, recomendacao, colab, origem, lista, eventos] = r.recordsets;
   const mapa = (rs) => Object.fromEntries(rs.map((x) => [x.k, x.n]));
   return {
     totais: t[0],
     dias: dias.map((d) => ({ dia: d.dia.toISOString().slice(0, 10), n: d.n })),
     formato: mapa(formato), recomendacao: mapa(recomendacao), colaboradores: mapa(colab), origem: mapa(origem),
     leads: lista,
+    eventos: eventos.map((e) => ({ evento: e.evento, detalhe: e.detalhe, n: e.n, semana: e.semana })),
   };
 }
 

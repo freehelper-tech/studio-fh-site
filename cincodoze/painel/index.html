@@ -8,7 +8,7 @@
 <link rel="icon" href="../../favicon.ico" sizes="any" />
 <meta name="theme-color" content="#03038c" />
 <link rel="stylesheet" href="../../styles.css?v=11" />
-<link rel="stylesheet" href="painel.css?v=3" />
+<link rel="stylesheet" href="painel.css?v=4" />
 </head>
 <body class="pn">
 
@@ -54,6 +54,14 @@
         <div class="pn-card"><h3>Tamanho da empresa</h3><div id="chartColab"></div></div>
         <div class="pn-card"><h3>Origem (utm_source)</h3><div id="chartOrigem"></div></div>
       </div>
+      <div class="pn-card pn-card--sec">
+        <div class="pn-card__row"><h3>Pop-up de saída e página de dados</h3><span class="pn-sub">contagem própria, não depende do GTM</span></div>
+        <div class="pn-kpis pn-kpis--in" id="exitKpis"></div>
+        <div class="pn-grid pn-grid--in">
+          <div><h4 class="pn-h4">O que fazem no pop-up</h4><div id="exitBars"></div></div>
+          <div><h4 class="pn-h4">Cliques na página de dados</h4><div id="dadosBars"></div></div>
+        </div>
+      </div>
       <div class="pn-card pn-card--table">
         <div class="pn-card__row"><h3>Leads</h3><span class="pn-sub">contato completo no Monday</span></div>
         <div class="pn-table-wrap"><table class="pn-table" id="tabela"></table></div>
@@ -94,6 +102,6 @@
   </main>
 </div>
 
-<script src="painel.js?v=5"></script>
+<script src="painel.js?v=6"></script>
 </body>
 </html>

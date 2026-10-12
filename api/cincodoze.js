@@ -6,6 +6,9 @@
  *   2. cria o item no board de leads do Monday ("[5.12] Empresa")
  *   3. grava em dbo.leads na base isolada studio-cincodoze (mesmo se o Monday falhar)
  *
+ * Também recebe { evento, detalhe } (sendBeacon) do pop-up de saída e da página
+ * /dados/ e grava em dbo.eventos — o painel conta daí, sem depender do GTM.
+ *
  * Variáveis: ver api/_cincodoze/db.js e api/_cincodoze/monday.js.
  *   C512_DRY_RUN = "1" → não chama Monday nem banco (teste local)
  */
@@ -17,6 +20,7 @@ const M = globalThis.MapaProposito;
 const DRY_RUN = process.env.C512_DRY_RUN === "1";
 const FORMATOS = ["talk", "embaixadores", "hub", "personalizado", "combo"];
 const NOME_FORMATO = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Oficina de Impacto", personalizado: "Projeto personalizado", combo: "Ajuda para escolher / combinar" };
+const EVENTOS = ["cincodoze_exit_view", "cincodoze_exit_click", "cincodoze_exit_recusa", "cincodoze_dados_view", "cincodoze_dados_cta"];
 const FAIXAS = ["Até 100", "101 a 500", "501 a 1.000", "1.001 a 5.000", "Mais de 5.000"];
 const ALLOWED_ORIGINS = /^https:\/\/(studio\.freehelper\.com\.br|[a-z0-9-]+\.vercel\.app)$|^http:\/\/localhost(:\d+)?$/;
 
@@ -58,6 +62,23 @@ module.exports = async (req, res) => {
   let body = req.body;
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = null; } }
   if (!body) return res.status(400).json({ ok: false, error: "JSON inválido" });
+  // Eventos de interação (pop-up de saída e /dados/): só nomes da lista, sem dado pessoal
+  if (body.evento) {
+    const evento = clean(body.evento, 40);
+    if (!EVENTOS.includes(evento)) return res.status(400).json({ ok: false });
+    if (DRY_RUN) return res.status(200).json({ ok: true });
+    try {
+      const p = await pool("escrita");
+      await p.request()
+        .input("evento", sql.NVarChar(40), evento)
+        .input("detalhe", sql.NVarChar(40), clean(body.detalhe, 40) || null)
+        .query("INSERT INTO dbo.eventos (evento, detalhe) VALUES (@evento, @detalhe)");
+    } catch (err) {
+      console.error("[cincodoze] evento falhou", err);
+    }
+    return res.status(200).json({ ok: true });
+  }
+
   if (clean(body.website, 10)) return res.status(200).json({ ok: true }); // honeypot
 
   const u = body.utm || {};

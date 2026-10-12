@@ -19,6 +19,13 @@
     window.dataLayer.push(evt);
     // mesmo evento no Clarity, para filtrar gravações (ex.: quem virou lead)
     try { if (window.clarity) window.clarity("event", evt.event); } catch (e) {}
+    // pop-up de saída também vai pro banco (painel), sem depender do GTM
+    if (/^cincodoze_exit_/.test(evt.event)) beacon(evt.event, evt.gatilho);
+  }
+  function beacon(evento, detalhe) {
+    try {
+      navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify({ evento: evento, detalhe: detalhe || "" })], { type: "text/plain" }));
+    } catch (e) {}
   }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {

@@ -98,6 +98,7 @@
       bars($("#chartRec"), d.recomendacao, NOMES);
       bars($("#chartColab"), d.colaboradores);
       bars($("#chartOrigem"), d.origem);
+      renderEventos(d.eventos || []);
       $("#tabela").innerHTML = "<thead><tr><th>Quando</th><th>Empresa</th><th>Pessoa</th><th>Colab.</th><th>Escolheu</th><th>Mapa indicou</th><th>Origem</th><th>Monday</th></tr></thead><tbody>" +
         (d.leads.length ? d.leads.map(function (l) {
           return "<tr><td>" + esc(l.quando) + "</td><td><b>" + esc(l.empresa) + "</b></td><td>" + esc(l.nome) + "<small>" + esc(l.cargo) + "</small></td><td>" + esc(l.colaboradores) +
@@ -106,6 +107,27 @@
             "</td><td>" + esc(l.utm_source || "direto") + "</td><td>" + (l.monday_id ? '<a href="' + MONDAY + esc(l.monday_id) + '" target="_blank" rel="noopener">abrir ↗</a>' : "⚠︎") + "</td></tr>";
         }).join("") : '<tr><td colspan="8" class="pn-empty">Nenhum lead ainda.</td></tr>') + "</tbody>";
     });
+  }
+
+  /* ---------- pop-up de saída e /dados/ (dbo.eventos) ---------- */
+  function renderEventos(evs) {
+    var tot = function (nome) { return evs.filter(function (e) { return e.evento === nome; }).reduce(function (a, e) { return a + e.n; }, 0); };
+    var sem = function (nome) { return evs.filter(function (e) { return e.evento === nome; }).reduce(function (a, e) { return a + e.semana; }, 0); };
+    var pct = function (a, b) { return b ? Math.round((a / b) * 100) + "%" : "—"; };
+    var vis = tot("cincodoze_exit_view"), cli = tot("cincodoze_exit_click"), rec = tot("cincodoze_exit_recusa");
+    var dv = tot("cincodoze_dados_view"), dc = tot("cincodoze_dados_cta");
+    $("#exitKpis").innerHTML =
+      kpi("Pop-up exibido", vis, sem("cincodoze_exit_view") + " nos últimos 7 dias") +
+      kpi("Clicaram em ver os dados", cli, pct(cli, vis) + " de quem viu o pop-up") +
+      kpi("Recusaram", rec, "“não quero fortalecer meu time”") +
+      kpi("Visitas à página de dados", dv, "inclui acesso direto pelo link") +
+      kpi("Cliques nos botões dela", dc, pct(dc, dv) + " de quem visitou");
+    var ignorou = Math.max(0, vis - cli - rec);
+    bars($("#exitBars"), vis ? { "Quero ver os dados": cli, "Não quero fortalecer meu time": rec, "Fechou no ×, fora ou saiu": ignorou } : {});
+    var NOMES_CTA = { "dados-topo": "Fale com a gente (topo)", "dados-final": "Quero fortalecer meu time", "dados-mapa": "Descobrir o formato ideal" };
+    var ctas = {};
+    evs.filter(function (e) { return e.evento === "cincodoze_dados_cta"; }).forEach(function (e) { var k = NOMES_CTA[e.detalhe] || e.detalhe || "outro"; ctas[k] = (ctas[k] || 0) + e.n; });
+    bars($("#dadosBars"), ctas);
   }
 
   /* ---------- audiência (GA4) ---------- */
