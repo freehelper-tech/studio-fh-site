@@ -40,6 +40,16 @@
     a.addEventListener("click", function () { nav.classList.remove("open"); });
   });
 
+  /* ---------- vídeo do depoimento: play customizado (mesmo padrão da home) ---------- */
+  document.querySelectorAll(".vplayer").forEach(function (box) {
+    var video = box.querySelector("video");
+    var btn = box.querySelector(".vplayer__play");
+    if (!video || !btn) return;
+    video.controls = false;
+    btn.addEventListener("click", function () { video.controls = true; video.play(); push({ event: "cincodoze_video_play" }); });
+    video.addEventListener("play", function () { box.classList.add("is-playing"); });
+  });
+
   /* ---------- reveal ---------- */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
@@ -97,7 +107,7 @@
   var box = document.getElementById("quiz");
   var state = { passo: -1, respostas: {}, resultado: null, escolha: "", iniciou: false };
   var LETRAS = ["A", "B", "C", "D", "E"];
-  var NOMES = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Hub de Impacto" };
+  var NOMES = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Hub de Impacto", personalizado: "Projeto personalizado" };
 
   function head(label, frac) {
     return '<div class="cad__top"><span class="cad__kicker">' + label + '</span>' +
@@ -133,7 +143,7 @@
 
   function formHtml(titulo, sub, escolha, botao) {
     var opts = ['<option value="">Selecione</option>']
-      .concat(["talk", "embaixadores", "hub", "combo"].map(function (k) {
+      .concat(["talk", "embaixadores", "hub", "personalizado", "combo"].map(function (k) {
         var nome = k === "combo" ? "Quero ajuda pra escolher / combinar" : NOMES[k];
         return '<option value="' + k + '"' + (escolha === k ? " selected" : "") + ">" + nome + "</option>";
       }));
@@ -188,7 +198,7 @@
       '<div class="cad__step is-active q-done">' +
       '<div class="q-done__icon">✓</div>' +
       "<h3>Recebemos, " + esc(nome.split(" ")[0]) + "!</h3>" +
-      "<p>Em até 48h úteis nosso time entra em contato pelo WhatsApp ou e-mail para conversar sobre o seu 5.12.</p>" +
+      "<p>Em até 48h úteis nosso time entra em contato pelo WhatsApp ou e-mail para conversar sobre o projeto da sua empresa.</p>" +
       "</div>";
   }
 

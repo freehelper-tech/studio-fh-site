@@ -11,7 +11,7 @@
   var API = (sameOrigin ? "" : API_HOST) + "/api/cincodoze-painel";
   var KEY = "c512_token";
   var MONDAY = "https://freehelper-force.monday.com/boards/18409461674/pulses/";
-  var NOMES = { talk: "Talk", embaixadores: "Embaixadores", hub: "Hub", combo: "Combo / ajuda", "-": "Sem Mapa" };
+  var NOMES = { talk: "Talk", embaixadores: "Embaixadores", hub: "Hub", personalizado: "Personalizado", combo: "Combo / ajuda", "-": "Sem Mapa" };
   var DIA = new Date("2026-12-05T09:00:00-03:00");
 
   var $ = function (s) { return document.querySelector(s); };

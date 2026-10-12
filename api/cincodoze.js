@@ -15,8 +15,8 @@ require("../cincodoze/mapa.js");
 const M = globalThis.MapaProposito;
 
 const DRY_RUN = process.env.C512_DRY_RUN === "1";
-const FORMATOS = ["talk", "embaixadores", "hub", "combo"];
-const NOME_FORMATO = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Hub de Impacto", combo: "Ajuda para escolher / combinar" };
+const FORMATOS = ["talk", "embaixadores", "hub", "personalizado", "combo"];
+const NOME_FORMATO = { talk: "Talk de Impacto", embaixadores: "Jornada de Embaixadores", hub: "Hub de Impacto", personalizado: "Projeto personalizado", combo: "Ajuda para escolher / combinar" };
 const FAIXAS = ["Até 100", "101 a 500", "501 a 1.000", "1.001 a 5.000", "Mais de 5.000"];
 const ALLOWED_ORIGINS = /^https:\/\/(studio\.freehelper\.com\.br|[a-z0-9-]+\.vercel\.app)$|^http:\/\/localhost(:\d+)?$/;
 

@@ -307,3 +307,21 @@ body.c-modal-open{overflow:hidden}
 .c-doubt:hover b{color:var(--indigo-900);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:760px){.c-modal{padding:10px;align-items:start}.c-modal__card{padding:22px 18px}}
 .c-modal .cad__bar,.c-modal .cad__count{display:none}
+
+/* ---------- v5: depoimento, mídia, projeto personalizado ---------- */
+.c-why{grid-template-columns:1.25fr .75fr}
+.c-why__title{max-width:620px}
+.c-voice .c-kicker{display:block}
+.c-quote{margin:4px 0 0;font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.4;letter-spacing:-.01em;font-weight:500;color:var(--ink-dark)}
+.c-press{padding:56px 0}
+.c-logos--press{gap:28px 64px}
+.c-logos--press img{height:40px}
+.c-wordmark{font-size:1.5rem;font-weight:800;letter-spacing:.04em;color:#5b5e7a;opacity:.75}
+.c-wordmark--serif{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:0;font-size:1.45rem}
+.c-custom{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:22px;padding:26px 30px;border-radius:var(--r-lg);background:#fff;border:1.5px dashed rgba(42,46,224,.35)}
+.c-custom b{display:block;font-size:1.25rem;letter-spacing:-.01em;color:var(--ink-dark)}
+.c-custom span{display:block;margin-top:4px;color:var(--ink-soft);max-width:560px}
+.btn--dark-ink{background:var(--indigo-900);color:#fff}
+.btn--dark-ink:hover{background:var(--blue);transform:translateY(-2px)}
+@media (max-width:980px){.c-why{grid-template-columns:1fr}}
+@media (max-width:760px){.c-custom{padding:22px 20px}.c-custom .btn{width:100%;justify-content:center;white-space:normal}.c-logos--press img{height:30px}.c-wordmark{font-size:1.2rem}}
