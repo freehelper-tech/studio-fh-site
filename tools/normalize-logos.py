@@ -38,6 +38,7 @@ WEIGHTS = {
     "sanremo": 1.15,             # logo empilhada compacta
     "sap": 0.95,
     "enaex": 1.00,
+    "elera": 1.00,
 }
 
 def trim(im):
